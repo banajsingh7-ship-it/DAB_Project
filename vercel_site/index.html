@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightWave Retail — Promotion Analytics Suite (Indian Market)</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Plotly.js via CDN -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+  <!-- PptxGenJS for 1-Click Client-Side PowerPoint Export -->
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+
+  <style>
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .plotly .modebar {
+      top: 5px !important;
+      right: 5px !important;
+    }
+
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+
+      header,
+      aside,
+      footer,
+      nav,
+      .download-ppt-btn,
+      button {
+        display: none !important;
+      }
+
+      #content-presentation {
+        display: block !important;
+      }
+
+      .slide {
+        display: block !important;
+        page-break-after: always;
+        break-after: page;
+        margin-bottom: 2rem;
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 2.5rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+  <!-- ========================================================================= -->
+  <!-- Top Executive Navigation Bar (Zero Overlap & Perfectly Aligned)           -->
+  <!-- ========================================================================= -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
+      <div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-4">
+
+        <!-- Brand & Identity Lockup -->
+        <div class="flex items-center space-x-3.5 flex-shrink-0">
+          <div
+            class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/25 flex-shrink-0 border border-cyan-400/30">
+            <!-- Bespoke Storefront + Retail Growth Trend Glyph -->
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              <path d="M12 2v4"></path>
+            </svg>
+          </div>
+          <div class="flex flex-col justify-center min-w-0">
+            <div class="flex items-center space-x-2">
+              <span class="font-extrabold text-lg text-white tracking-tight leading-tight whitespace-nowrap">BrightWave
+                Retail</span>
+              <span
+                class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-cyan-500/40 uppercase tracking-wider whitespace-nowrap">Analytics
+                Suite</span>
+            </div>
+            <p
+              class="text-[11px] sm:text-xs text-slate-300 font-medium leading-normal mt-1 flex items-center space-x-1.5 whitespace-nowrap">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+              <span>BBA Semester III • Python for Business Analytics • Indian Retail Market (INR)</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs with Bespoke SVG Icons -->
+        <nav
+          class="flex items-center space-x-1.5 sm:space-x-2 overflow-x-auto max-w-full pb-1 xl:pb-0 hide-scrollbar flex-shrink-0">
+
+          <!-- Tab 1: Presentation Deck -->
+          <button onclick="switchTab('presentation')" id="tab-btn-presentation"
+            class="tab-btn flex items-center space-x-2 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800">
+            <svg class="w-4 h-4 text-amber-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+              <path d="M7 10l3-3 3 3 4-4"></path>
+            </svg>
+            <span>Presentation Deck</span>
+          </button>
+
+          <!-- Tab 2: Interactive Dashboard -->
+          <button onclick="switchTab('analytics')" id="tab-btn-analytics"
+            class="tab-btn active flex items-center space-x-2 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all whitespace-nowrap bg-cyan-600 text-white shadow-md shadow-cyan-600/30">
+            <svg class="w-4 h-4 text-cyan-200 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Interactive Dashboard</span>
+          </button>
+
+          <!-- Tab 3: Data Explorer -->
+          <button onclick="switchTab('explorer')" id="tab-btn-explorer"
+            class="tab-btn flex items-center space-x-2 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800">
+            <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+            <span>Data Explorer</span>
+          </button>
+
+          <!-- Tab 4: Full Report & Viva -->
+          <button onclick="switchTab('report')" id="tab-btn-report"
+            class="tab-btn flex items-center space-x-2 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800">
+            <svg class="w-4 h-4 text-purple-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            <span>Full Report & Viva</span>
+          </button>
+        </nav>
+
+        <!-- Right Action Controls & Utility Status -->
+        <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+          <!-- Download PPT Button -->
+          <button onclick="downloadPowerPointPresentation()"
+            title="Download Presentation in Microsoft PowerPoint (.pptx) format"
+            class="download-ppt-btn flex items-center space-x-1.5 px-3.5 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-lg text-xs font-bold transition shadow-md shadow-amber-500/25 whitespace-nowrap cursor-pointer hover:scale-105 active:scale-95">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download PPT (.pptx)</span>
+          </button>
+
+          <div
+            class="hidden 2xl:flex items-center space-x-2.5 bg-slate-800/80 border border-slate-700/60 rounded-lg px-3 py-1.5 text-xs text-slate-300 whitespace-nowrap">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="font-medium text-slate-200">148 Clean Records</span>
+            <span class="text-slate-600">•</span>
+            <span
+              class="font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">Currency:
+              Rs. (INR)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- Main Application Body: Sidebar + Main Content Area                        -->
+  <!-- ========================================================================= -->
+  <div class="flex-1 flex max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 gap-6">
+
+    <!-- Global Interactive Sidebar Filters -->
+    <aside id="global-sidebar" class="w-72 flex-shrink-0 space-y-5 hidden md:block">
+
+      <!-- Filter Card -->
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <div class="flex items-center space-x-2.5 text-slate-800 font-bold text-sm">
+            <div class="w-7 h-7 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center flex-shrink-0">
+              <!-- Filter Funnel Icon -->
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+            </div>
+            <span>Global Data Filters</span>
+          </div>
+          <button onclick="resetFilters()"
+            class="text-xs text-cyan-600 hover:text-cyan-700 font-semibold hover:underline">
+            Reset
+          </button>
+        </div>
+
+        <!-- Filter 1: Region -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-semibold text-slate-600 uppercase tracking-wider flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Region (India)</span>
+          </label>
+          <select id="filter-region" onchange="applyFilters()"
+            class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <option value="All">All Regions (4)</option>
+            <option value="North">North Region</option>
+            <option value="South">South Region</option>
+            <option value="East">East Region</option>
+            <option value="West">West Region</option>
+          </select>
+        </div>
+
+        <!-- Filter 2: Channel -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-semibold text-slate-600 uppercase tracking-wider flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Marketing Channel</span>
+          </label>
+          <select id="filter-channel" onchange="applyFilters()"
+            class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <option value="All">All Channels (5)</option>
+            <option value="In-Store">In-Store (Retail POS)</option>
+            <option value="SMS">SMS Marketing</option>
+            <option value="Email">Email Marketing</option>
+            <option value="Instagram">Instagram Ads</option>
+            <option value="Facebook">Facebook Ads</option>
+          </select>
+        </div>
+
+        <!-- Filter 3: Campaign Type -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-semibold text-slate-600 uppercase tracking-wider flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+              <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            </svg>
+            <span>Promotion Strategy</span>
+          </label>
+          <select id="filter-type" onchange="applyFilters()"
+            class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <option value="All">All Strategies (5)</option>
+            <option value="Discount Offer">Discount Offer</option>
+            <option value="Festival Campaign">Festival Campaign</option>
+            <option value="Loyalty Programme">Loyalty Programme</option>
+            <option value="New Product Launch">New Product Launch</option>
+            <option value="Referral Offer">Referral Offer</option>
+          </select>
+        </div>
+
+        <!-- Filter 4: Month -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-semibold text-slate-600 uppercase tracking-wider flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Operating Month</span>
+          </label>
+          <select id="filter-month" onchange="applyFilters()"
+            class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <option value="All">All Months (Jan–Sep 2026)</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+          </select>
+        </div>
+
+        <!-- Filter Status Tag -->
+        <div id="filter-status-banner"
+          class="pt-2 text-xs text-slate-500 flex items-center justify-between border-t border-slate-100">
+          <span>Active Dataset:</span>
+          <span id="filtered-record-count" class="font-bold text-slate-800">148 / 148 Campaigns</span>
+        </div>
+      </div>
+
+      <!-- Quick Viva Fast-Facts Card -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-xl shadow-sm p-4 space-y-3">
+        <div class="flex items-center space-x-2 text-cyan-400 font-semibold text-xs tracking-wider uppercase">
+          <div
+            class="w-6 h-6 rounded-md bg-amber-400/20 text-amber-400 flex items-center justify-center font-bold text-xs">
+            ₹
+          </div>
+          <span>Viva Fast-Facts (India)</span>
+        </div>
+        <ul class="text-xs space-y-2 text-slate-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-cyan-400 font-bold">•</span>
+            <span><strong>Top Revenue:</strong> In-Store (Rs. 10.54M, 57% share)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-cyan-400 font-bold">•</span>
+            <span><strong>Top ROAS:</strong> In-Store (27.8x) & SMS (12.7x)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">•</span>
+            <span><strong>Budget Leak:</strong> Facebook (3.25x ROAS, 2.2% CTR)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 font-bold">•</span>
+            <span><strong>Revenue Skew:</strong> Mean (Rs. 124K) ≈ 2× Median (Rs. 63K)</span>
+          </li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 space-y-6 overflow-hidden">
+
+      <!-- ===================================================================== -->
+      <!-- TAB 1: PRESENTATION DECK (SLIDE MODE)                                -->
+      <!-- ===================================================================== -->
+      <section id="content-presentation" class="tab-content space-y-6">
+
+        <!-- Slide Deck Header & Controls -->
+        <div
+          class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div class="flex items-center space-x-3">
+            <span
+              class="bg-amber-100 text-amber-900 text-xs px-2.5 py-1 rounded-full font-bold flex items-center space-x-1.5">
+              <svg class="w-3.5 h-3.5 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Slide Deck Mode</span>
+            </span>
+            <h2 id="slide-title-indicator" class="font-bold text-slate-800 text-sm sm:text-base">Slide 1 of 6: Executive
+              Challenge</h2>
+          </div>
+
+          <!-- Slide Navigation Controls & Action Buttons -->
+          <div class="flex items-center space-x-2 flex-wrap gap-2">
+            <button onclick="prevSlide()"
+              class="p-2 border border-slate-200 hover:bg-slate-100 rounded-lg text-slate-700 transition"
+              title="Previous Slide">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div id="slide-dots" class="flex space-x-1.5 px-2"></div>
+            <button onclick="nextSlide()"
+              class="p-2 border border-slate-200 hover:bg-slate-100 rounded-lg text-slate-700 transition"
+              title="Next Slide">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
+            <!-- Download PPT Button -->
+            <button onclick="downloadPowerPointPresentation()"
+              title="Download Presentation in Microsoft PowerPoint (.pptx) format"
+              class="download-ppt-btn flex items-center space-x-1.5 px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm whitespace-nowrap cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download PPT (.pptx)</span>
+            </button>
+
+            <!-- Export PDF / Print Button -->
+            <button onclick="window.print()" title="Export all slides as PDF or print presentation"
+              class="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition border border-slate-200 whitespace-nowrap cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Export PDF / Print</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Slide 1: Title & Business Problem -->
+        <div id="slide-1"
+          class="slide active bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 space-y-8">
+          <div class="border-b border-slate-100 pb-6">
+            <span class="text-cyan-600 font-bold uppercase tracking-wider text-xs">BrightWave Retail • Indian Market
+              Evaluation</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 tracking-tight">Evaluating Promotional
+              Campaign Performance</h2>
+            <p class="text-slate-500 text-base mt-2">An Empirical Analytics Study across 4 Regions, 5 Channels, and 148
+              Clean Campaigns</p>
+          </div>
+
+          <!-- One-Click External PPT Download Card -->
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200 gap-3">
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 text-white flex items-center justify-center font-extrabold text-sm shadow-md shadow-amber-500/20 flex-shrink-0">
+                PPT
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-800 flex items-center space-x-1.5">
+                  <span>Download Complete Slide Deck in PowerPoint (.pptx)</span>
+                  <span class="bg-amber-200 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">Offline
+                    Ready</span>
+                </p>
+                <p class="text-[11px] text-slate-600 mt-0.5">Click below to generate and download the authentic,
+                  editable Microsoft PowerPoint presentation file with all 9 slides, tables, and KPIs in Rs.</p>
+              </div>
+            </div>
+            <button onclick="downloadPowerPointPresentation()"
+              class="download-ppt-btn px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm whitespace-nowrap flex items-center space-x-2 flex-shrink-0 cursor-pointer">
+              <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download PPT (.pptx)</span>
+            </button>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
+              <div
+                class="w-9 h-9 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm shadow-sm">
+                <svg class="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+              </div>
+              <h3 class="font-bold text-slate-800 text-sm">1. The Commercial Challenge</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">BrightWave spent Rs. 2.05 Million across retail and
+                digital channels without attribution data, resulting in budget leaks on passive social media feeds.</p>
+            </div>
+            <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
+              <div
+                class="w-9 h-9 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold text-sm shadow-sm">
+                <svg class="w-5 h-5 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </div>
+              <h3 class="font-bold text-slate-800 text-sm">2. The Analytical Scope</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">150 promotional records forensically cleaned and
+                evaluated across Click-Through Rate (CTR), Conversion Rate (CVR), and Return on Ad Spend (ROAS).</p>
+            </div>
+            <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
+              <div
+                class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm shadow-sm">
+                <svg class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                  </path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-slate-800 text-sm">3. The Strategic Goal</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Deliver actionable budget reallocations to eliminate
+                unprofitable marketing waste and scale high-ROAS physical and SMS retention flywheels.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Data Audit & Hygiene -->
+        <div id="slide-2" class="slide bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 space-y-8">
+          <div class="border-b border-slate-100 pb-4">
+            <span class="text-cyan-600 font-bold uppercase tracking-wider text-xs">Data Hygiene & Governance</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Single Source of Truth: Data Cleaning
+              Audit</h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-center">
+              <p class="text-xs text-slate-500 font-medium">Raw Records</p>
+              <p class="text-2xl font-bold text-slate-800 mt-1">150</p>
+              <p class="text-xs text-slate-400 mt-0.5">Initial raw state</p>
+            </div>
+            <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-center">
+              <p class="text-xs text-amber-700 font-medium">Duplicates Dropped</p>
+              <p class="text-2xl font-bold text-amber-700 mt-1">2</p>
+              <p class="text-xs text-amber-600 mt-0.5">PC0019 & PC0065</p>
+            </div>
+            <div class="p-4 bg-blue-50 rounded-xl border border-blue-200 text-center">
+              <p class="text-xs text-blue-700 font-medium">Median Imputations</p>
+              <p class="text-2xl font-bold text-blue-700 mt-1">6</p>
+              <p class="text-xs text-blue-600 mt-0.5">Spend (Rs. 13.5K) & Leads (298)</p>
+            </div>
+            <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-center">
+              <p class="text-xs text-emerald-700 font-medium">Cleaned Records</p>
+              <p class="text-2xl font-bold text-emerald-700 mt-1">148</p>
+              <p class="text-xs text-emerald-600 mt-0.5">Verified final dataset</p>
+            </div>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+            <h4 class="font-bold text-sm text-slate-800 mb-2">Key Data Hygiene Decisions:</h4>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <li><strong>Categorical Harmonization:</strong> Resolved casing fragmentation (e.g., <code
+                  class="bg-white px-1 py-0.5 rounded border border-slate-200">instagram</code> → <code
+                  class="bg-white px-1 py-0.5 rounded border border-slate-200">Instagram</code>, <code
+                  class="bg-white px-1 py-0.5 rounded border border-slate-200">FACEBOOK</code> → <code
+                  class="bg-white px-1 py-0.5 rounded border border-slate-200">Facebook</code>).</li>
+              <li><strong>Robust Median Imputation:</strong> Protected baseline metrics against distortion from
+                right-skewed blockbuster campaigns.</li>
+              <li><strong>Date Parsing:</strong> Standardized strings to <code
+                  class="bg-white px-1 py-0.5 rounded border border-slate-200">datetime64</code> to enable chronological
+                time-series aggregations across 9 operating months.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 3: Executive KPI Snapshot -->
+        <div id="slide-3" class="slide bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 space-y-8">
+          <div class="border-b border-slate-100 pb-4">
+            <span class="text-cyan-600 font-bold uppercase tracking-wider text-xs">Portfolio Performance</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Executive KPI Snapshot: Full Portfolio
+            </h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="p-6 bg-slate-900 text-white rounded-2xl shadow-sm">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Promotional Spend</p>
+              <p class="text-3xl font-extrabold mt-2 text-white">Rs. 2.05M</p>
+              <p class="text-xs text-slate-400 mt-1">Rs. 13,821.50 average / campaign</p>
+            </div>
+            <div class="p-6 bg-slate-900 text-white rounded-2xl shadow-sm">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Attributed Revenue</p>
+              <p class="text-3xl font-extrabold mt-2 text-cyan-400">Rs. 18.45M</p>
+              <p class="text-xs text-slate-400 mt-1">Rs. 124,678.32 average / campaign</p>
+            </div>
+            <div class="p-6 bg-gradient-to-br from-emerald-600 to-teal-700 text-white rounded-2xl shadow-sm">
+              <p class="text-xs font-semibold text-emerald-100 uppercase tracking-wider">Portfolio Overall ROAS</p>
+              <p class="text-3xl font-extrabold mt-2 text-white">9.02x</p>
+              <p class="text-xs text-emerald-100 mt-1">Rs. 9.02 returned per Rs. 1.00 spent</p>
+            </div>
+            <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Customer Reach</p>
+              <p class="text-2xl font-bold text-slate-900 mt-2">6.38M Views</p>
+              <p class="text-xs text-slate-500 mt-1">348,126 Total Clicks</p>
+            </div>
+            <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Overall Engagement (CTR)</p>
+              <p class="text-2xl font-bold text-slate-900 mt-2">5.45%</p>
+              <p class="text-xs text-slate-500 mt-1">In-Store (7.8%) & SMS (6.4%) lead</p>
+            </div>
+            <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Completed Conversions</p>
+              <p class="text-2xl font-bold text-slate-900 mt-2">17,624 Orders</p>
+              <p class="text-xs text-slate-500 mt-1">5.06% Average Conversion Rate</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Channel Performance & Efficiency -->
+        <div id="slide-4" class="slide bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 space-y-8">
+          <div class="border-b border-slate-100 pb-4">
+            <span class="text-cyan-600 font-bold uppercase tracking-wider text-xs">Channel Attribution</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Channel Performance: In-Store Dominance
+              vs. Facebook Leak</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 items-center">
+            <div class="space-y-4">
+              <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+                <div class="flex items-center space-x-2 text-emerald-800 font-bold text-sm">
+                  <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>In-Store Retail Fortress:</span>
+                </div>
+                <p class="text-xs text-emerald-900 mt-1 leading-relaxed">
+                  Generated <strong>Rs. 10.54M (57.1% of total revenue)</strong> with an exceptional <strong>27.84x
+                    ROAS</strong> and 7.82% CTR. Highest intent and transaction density.
+                </p>
+              </div>
+              <div class="p-4 bg-red-50 border border-red-200 rounded-xl">
+                <div class="flex items-center space-x-2 text-red-800 font-bold text-sm">
+                  <svg class="w-4 h-4 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                  </svg>
+                  <span>Facebook Ad Leak:</span>
+                </div>
+                <p class="text-xs text-red-900 mt-1 leading-relaxed">
+                  Absorbed 15.3% of spend but produced only 4.3% of revenue (<strong>Rs. 789K</strong>), lagging at
+                  <strong>3.25x ROAS</strong> and a weak 2.21% CTR. Unprofitable digital bleeding.
+                </p>
+              </div>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+              <h4 class="font-bold text-sm text-slate-800 mb-3">Revenue Contribution by Channel</h4>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>In-Store</span>
+                    <span>57.1% (Rs. 10.54M)</span>
+                  </div>
+                  <div class="w-full bg-slate-200 rounded-full h-3">
+                    <div class="bg-emerald-500 h-3 rounded-full" style="width: 57.1%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>SMS</span>
+                    <span>14.3% (Rs. 2.64M)</span>
+                  </div>
+                  <div class="w-full bg-slate-200 rounded-full h-3">
+                    <div class="bg-blue-500 h-3 rounded-full" style="width: 14.3%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>Email</span>
+                    <span>12.4% (Rs. 2.30M)</span>
+                  </div>
+                  <div class="w-full bg-slate-200 rounded-full h-3">
+                    <div class="bg-cyan-500 h-3 rounded-full" style="width: 12.4%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>Instagram</span>
+                    <span>11.8% (Rs. 2.18M)</span>
+                  </div>
+                  <div class="w-full bg-slate-200 rounded-full h-3">
+                    <div class="bg-purple-500 h-3 rounded-full" style="width: 11.8%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1 text-red-600">
+                    <span>Facebook</span>
+                    <span>4.3% (Rs. 0.79M)</span>
+                  </div>
+                  <div class="w-full bg-slate-200 rounded-full h-3">
+                    <div class="bg-red-400 h-3 rounded-full" style="width: 4.3%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Campaign Strategies & Seasonality -->
+        <div id="slide-5" class="slide bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 space-y-8">
+          <div class="border-b border-slate-100 pb-4">
+            <span class="text-cyan-600 font-bold uppercase tracking-wider text-xs">Strategy & Seasonality</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Campaign Dynamics & Peak Revenue Timing
+            </h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+              <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <svg class="w-4 h-4 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                </svg>
+                <span>Top Performing Campaign Types</span>
+              </h3>
+              <ul class="text-xs text-slate-600 space-y-2.5">
+                <li class="p-2.5 bg-white rounded-lg border border-slate-200">
+                  <span class="font-bold text-slate-800">1. Discount Offers:</span> Highest overall revenue (<strong>Rs.
+                    4.82M</strong>) and conversion volume (<strong>4,812 orders</strong>). Immediate price cuts trigger
+                  high transactional urgency.
+                </li>
+                <li class="p-2.5 bg-white rounded-lg border border-slate-200">
+                  <span class="font-bold text-slate-800">2. New Product Launches:</span> Highest strategic efficiency
+                  (<strong>18.52x ROAS</strong>) producing <strong>Rs. 4.13M</strong> on lower spend. Novelty commands
+                  premium pricing.
+                </li>
+                <li class="p-2.5 bg-white rounded-lg border border-slate-200">
+                  <span class="font-bold text-slate-800">3. Festival Campaigns:</span> Highest spend (<strong>Rs.
+                    492K</strong>) but lowest ROAS (<strong>9.42x</strong>) due to intense seasonal advertising bidding
+                  competition.
+                </li>
+              </ul>
+            </div>
+            <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+              <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Monthly Seasonality Trajectory</span>
+              </h3>
+              <div class="space-y-2 text-xs text-slate-600">
+                <div class="p-3 bg-cyan-50 border border-cyan-200 rounded-lg">
+                  <span class="font-bold text-cyan-900">July Peak (Rs. 3.13M, 24.1x ROAS):</span> Mid-year clearance and
+                  summer foot-traffic create the annual commercial high-water mark.
+                </div>
+                <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <span class="font-bold text-blue-900">June Surge (Rs. 2.85M, 15.7x ROAS):</span> Strong mid-year
+                  demand acceleration pre-dating July peaks.
+                </div>
+                <div class="p-3 bg-slate-100 rounded-lg">
+                  <span class="font-bold text-slate-700">Late Q3 Lull (Aug Rs. 1.25M, Sep Rs. 1.32M):</span>
+                  Post-clearance dip where promotional frequency should be calibrated down.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Recommendations & Limitations -->
+        <div id="slide-6" class="slide bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 space-y-8">
+          <div class="border-b border-slate-100 pb-4">
+            <span class="text-cyan-600 font-bold uppercase tracking-wider text-xs">Managerial Roadmap</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Strategic Recommendations & Analytical
+              Limitations</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-3">
+              <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span>Actionable Recommendations</span>
+              </h3>
+              <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-xs space-y-2 text-emerald-900">
+                <p><strong>1. Shift Rs. 125K from Facebook to SMS:</strong> Reallocate 40% of Facebook spend to SMS
+                  retention and in-store merchandising (projected +Rs. 1.18M revenue lift).</p>
+                <p><strong>2. Omnichannel QR Bridges:</strong> Capture retail in-store footfall into SMS/Email loyalty
+                  lists with an instant 5% POS coupon.</p>
+                <p><strong>3. Mid-Year Focus:</strong> Concentrate major product launches and discount budgets during
+                  June–July peak demand.</p>
+                <p><strong>4. ROAS Guardrails:</strong> Automatically pause any digital campaign that drops below 4.0x
+                  ROAS after Rs. 5,000 spend.</p>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>Analytical Limitations (Viva Defense)</span>
+              </h3>
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-2 text-slate-600">
+                <p><strong>• Sample Size:</strong> 148 campaigns across 9 months (excludes Q4 holiday peak period).</p>
+                <p><strong>• Revenue vs. Profit:</strong> Lack of Cost of Goods Sold (COGS) means high-revenue discounts
+                  may carry lower net margins.</p>
+                <p><strong>• Single-Touch Attribution:</strong> Multi-touch omnichannel customer journeys are aggregated
+                  to a primary campaign identifier.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 2: INTERACTIVE DASHBOARD & RECOMMENDATION ENGINE                  -->
+      <!-- ===================================================================== -->
+      <section id="content-analytics" class="tab-content active space-y-6">
+
+        <!-- Dynamic KPI Cards Grid with Indian Rupee (Rs.) Formatting -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+
+          <!-- KPI 1: Spend -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Filtered Spend</span>
+              <div
+                class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs">
+                ₹
+              </div>
+            </div>
+            <p id="kpi-spend" class="text-xl font-extrabold text-slate-900 mt-2">Rs. 2.05M</p>
+            <p class="text-xs text-slate-500 mt-0.5">Budget Allocated</p>
+          </div>
+
+          <!-- KPI 2: Revenue -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Filtered Revenue</span>
+              <div class="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+            </div>
+            <p id="kpi-revenue" class="text-xl font-extrabold text-cyan-600 mt-2">Rs. 18.45M</p>
+            <p class="text-xs text-slate-500 mt-0.5">Attributed Sales</p>
+          </div>
+
+          <!-- KPI 3: ROAS -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Overall ROAS</span>
+              <div class="w-8 h-8 rounded-lg bg-violet-100 text-violet-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </div>
+            </div>
+            <p id="kpi-roas" class="text-xl font-extrabold text-emerald-600 mt-2">9.02x</p>
+            <p class="text-xs text-slate-500 mt-0.5">Revenue / Spend</p>
+          </div>
+
+          <!-- KPI 4: Conversions -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Conversions</span>
+              <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </div>
+            </div>
+            <p id="kpi-conversions" class="text-xl font-extrabold text-slate-900 mt-2">17,624</p>
+            <p class="text-xs text-slate-500 mt-0.5">Completed Orders</p>
+          </div>
+
+          <!-- KPI 5: CTR -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Average CTR</span>
+              <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 14 14"></polyline>
+                </svg>
+              </div>
+            </div>
+            <p id="kpi-ctr" class="text-xl font-extrabold text-slate-900 mt-2">5.45%</p>
+            <p class="text-xs text-slate-500 mt-0.5">Clicks / Views</p>
+          </div>
+
+          <!-- KPI 6: CVR -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Average CVR</span>
+              <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <polyline points="17 11 19 13 23 9"></polyline>
+                </svg>
+              </div>
+            </div>
+            <p id="kpi-cvr" class="text-xl font-extrabold text-slate-900 mt-2">5.06%</p>
+            <p class="text-xs text-slate-500 mt-0.5">Orders / Clicks</p>
+          </div>
+
+        </div>
+
+        <!-- Smart Automated Recommendation Engine Banner -->
+        <div id="smart-recommendation-engine"
+          class="bg-gradient-to-r from-cyan-900 to-slate-900 text-white rounded-2xl shadow-sm p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2.5">
+              <span class="bg-cyan-500 text-slate-950 p-1.5 rounded-lg flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                  </path>
+                </svg>
+              </span>
+              <h3 class="font-bold text-sm tracking-wide text-cyan-300 uppercase">Automated Managerial Recommendation
+                Engine</h3>
+            </div>
+            <span class="text-xs text-slate-400 font-medium">Dynamic Decision Rule-Engine</span>
+          </div>
+          <div id="dynamic-recommendation-content" class="grid sm:grid-cols-3 gap-3 text-xs"></div>
+        </div>
+
+        <!-- Interactive What-If Scenario Budget Reallocation Simulator -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+          <div
+            class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-3">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" y1="21" x2="4" y2="14"></line>
+                  <line x1="4" y1="10" x2="4" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12" y2="3"></line>
+                  <line x1="20" y1="21" x2="20" y2="16"></line>
+                  <line x1="20" y1="12" x2="20" y2="3"></line>
+                  <line x1="1" y1="14" x2="7" y2="14"></line>
+                  <line x1="9" y1="8" x2="15" y2="8"></line>
+                  <line x1="17" y1="16" x2="23" y2="16"></line>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-800 text-sm">Interactive What-If Scenario Simulator: Budget Reallocation
+                </h3>
+                <p class="text-xs text-slate-500">Test live revenue impact of shifting spend from Facebook (3.25x ROAS)
+                  to SMS & In-Store (12.7x–27.8x ROAS)</p>
+              </div>
+            </div>
+            <span
+              class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200">
+              Live Optimization Model
+            </span>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 items-center">
+            <!-- Slider Control -->
+            <div class="space-y-2 md:col-span-1 bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <div class="flex justify-between items-center text-xs font-semibold">
+                <span class="text-slate-700">Reallocate from Facebook:</span>
+                <span id="slider-realloc-val" class="text-indigo-600 font-bold text-sm">Rs. 125,000</span>
+              </div>
+              <input type="range" id="reallocation-slider" min="0" max="250000" step="5000" value="125000"
+                oninput="runSimulator()" class="w-full accent-indigo-600 cursor-pointer">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span>Rs. 0 (Status Quo)</span>
+                <span>Rs. 125K (Recommended)</span>
+                <span>Rs. 250K (Aggressive)</span>
+              </div>
+            </div>
+
+            <!-- Simulator Metrics Output -->
+            <div class="grid grid-cols-2 gap-3 md:col-span-2">
+              <div class="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl">
+                <p class="text-[11px] font-semibold text-emerald-800 uppercase tracking-wider">Projected Revenue Lift
+                </p>
+                <p id="sim-revenue-lift" class="text-2xl font-black text-emerald-600 mt-1">+Rs. 1.18M</p>
+                <p class="text-xs text-emerald-700 mt-0.5">Incremental gain from higher ROAS</p>
+              </div>
+              <div class="p-3.5 bg-blue-50 border border-blue-200 rounded-xl">
+                <p class="text-[11px] font-semibold text-blue-800 uppercase tracking-wider">Simulated Total Revenue</p>
+                <p id="sim-total-revenue" class="text-2xl font-black text-blue-600 mt-1">Rs. 19.63M</p>
+                <p id="sim-new-roas" class="text-xs text-blue-700 mt-0.5">Portfolio ROAS rises from 9.02x to 9.60x</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Plotly Charts Row 1: Channel Performance & Monthly Trend -->
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-sm">Revenue vs. Spend by Channel</h3>
+                  <p class="text-xs text-slate-500">Commercial output vs. capital investment</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-600 rounded">Plotly.js • Values in
+                Rs. M</span>
+            </div>
+            <div id="chartChannelRevSpend" class="w-full h-72"></div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-sm">Monthly Revenue Trajectory</h3>
+                  <p class="text-xs text-slate-500">Chronological trend across 9 operating months</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-600 rounded">Plotly.js • Jan–Sep
+                2026</span>
+            </div>
+            <div id="chartMonthlyTrend" class="w-full h-72"></div>
+          </div>
+        </div>
+
+        <!-- Live Plotly Charts Row 2: Campaign Type & ROAS Distribution -->
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-sm">Campaign Type Efficiency Breakdown</h3>
+                  <p class="text-xs text-slate-500">Revenue generation across promotion types</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-600 rounded">Plotly.js • Rs.
+                Millions</span>
+            </div>
+            <div id="chartCampaignType" class="w-full h-72"></div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-4">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-sm">Channel Average ROAS (Multiplier)</h3>
+                  <p class="text-xs text-slate-500">Return multiple per rupee invested</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-600 rounded">Plotly.js • Multiplier
+                (x)</span>
+            </div>
+            <div id="chartChannelVariance" class="w-full h-72"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 3: DATA EXPLORER & CLEANING AUDIT                                 -->
+      <!-- ===================================================================== -->
+      <section id="content-explorer" class="tab-content space-y-6">
+
+        <!-- Hygiene Summary Cards -->
+        <div class="grid sm:grid-cols-4 gap-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-center space-x-2">
+              <div class="w-6 h-6 rounded-md bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="text-xs text-slate-500 font-medium">Audit Status</span>
+            </div>
+            <p class="text-lg font-bold text-emerald-600 mt-1">100% Cleaned</p>
+            <p class="text-xs text-slate-400 mt-0.5">Zero nulls or duplicates</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-center space-x-2">
+              <div class="w-6 h-6 rounded-md bg-amber-100 text-amber-600 flex items-center justify-center">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </div>
+              <span class="text-xs text-slate-500 font-medium">Duplicates Removed</span>
+            </div>
+            <p class="text-lg font-bold text-slate-800 mt-1">2 Rows</p>
+            <p class="text-xs text-slate-400 mt-0.5">PC0019 & PC0065 dropped</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-6 h-6 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">
+                ₹
+              </div>
+              <span class="text-xs text-slate-500 font-medium">Imputations Applied</span>
+            </div>
+            <p class="text-lg font-bold text-slate-800 mt-1">8 Fields</p>
+            <p class="text-xs text-slate-400 mt-0.5">Spend, Leads, Channel mode</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-center space-x-2">
+              <div class="w-6 h-6 rounded-md bg-cyan-100 text-cyan-600 flex items-center justify-center">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <span class="text-xs text-slate-500 font-medium">Features Engineered</span>
+            </div>
+            <p class="text-lg font-bold text-cyan-600 mt-1">5 KPIs</p>
+            <p class="text-xs text-slate-400 mt-0.5">CTR, CVR, ROAS, Month, Num</p>
+          </div>
+        </div>
+
+        <!-- Searchable Interactive Data Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden space-y-4 p-5">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <h3 class="font-bold text-slate-800 text-sm">Campaign Records Explorer</h3>
+              <p class="text-xs text-slate-500">Searchable, sortable dataset with verified derived business metrics (in
+                Rs.)</p>
+            </div>
+
+            <div class="flex items-center space-x-2 w-full sm:w-auto">
+              <!-- Search Input -->
+              <div class="relative flex-1 sm:w-64">
+                <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="table-search" oninput="renderTable()" placeholder="Search ID, channel, region..."
+                  class="w-full text-xs pl-9 pr-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50 focus:bg-white">
+              </div>
+
+              <!-- Download CSV Button -->
+              <button onclick="downloadCleanedCSV()"
+                class="flex items-center space-x-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-medium transition shadow-sm whitespace-nowrap">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download CSV</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Table Container -->
+          <div class="overflow-x-auto border border-slate-100 rounded-lg max-h-96 overflow-y-auto">
+            <table class="w-full text-left text-xs text-slate-600">
+              <thead
+                class="bg-slate-100 text-slate-700 uppercase font-semibold text-[11px] sticky top-0 z-10 border-b border-slate-200">
+                <tr>
+                  <th class="py-2.5 px-3">ID</th>
+                  <th class="py-2.5 px-3">Date</th>
+                  <th class="py-2.5 px-3">Channel</th>
+                  <th class="py-2.5 px-3">Type</th>
+                  <th class="py-2.5 px-3">Region</th>
+                  <th class="py-2.5 px-3 text-right">Spend (Rs.)</th>
+                  <th class="py-2.5 px-3 text-right">Impressions</th>
+                  <th class="py-2.5 px-3 text-right">Clicks</th>
+                  <th class="py-2.5 px-3 text-right">CTR (%)</th>
+                  <th class="py-2.5 px-3 text-right">Conversions</th>
+                  <th class="py-2.5 px-3 text-right">CVR (%)</th>
+                  <th class="py-2.5 px-3 text-right">Revenue (Rs.)</th>
+                  <th class="py-2.5 px-3 text-right">ROAS</th>
+                </tr>
+              </thead>
+              <tbody id="table-body" class="divide-y divide-slate-100"></tbody>
+            </table>
+          </div>
+
+          <div class="flex justify-between items-center text-xs text-slate-500 pt-2">
+            <span id="table-pagination-info">Showing records</span>
+            <div class="flex space-x-1">
+              <button onclick="changeTablePage(-1)"
+                class="px-2.5 py-1 border border-slate-200 rounded hover:bg-slate-50">Prev</button>
+              <span id="current-page-num" class="px-2.5 py-1 font-bold text-slate-800">1</span>
+              <button onclick="changeTablePage(1)"
+                class="px-2.5 py-1 border border-slate-200 rounded hover:bg-slate-50">Next</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4: FULL REPORT & VIVA DEFENSE                                     -->
+      <!-- ===================================================================== -->
+      <section id="content-report" class="tab-content space-y-6">
+
+        <!-- Viva Defense Quick-Reference Accordion -->
+        <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl p-6 shadow-sm space-y-4">
+          <div class="flex items-center space-x-2.5 text-cyan-400 font-bold text-sm uppercase tracking-wider">
+            <div
+              class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center border border-cyan-500/30">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <span>Viva Examiner High-Scoring Cheat Sheet</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 bg-slate-800/80 rounded-lg border border-slate-700 space-y-1.5">
+              <p class="font-bold text-cyan-300">Q1: Why is Revenue Mean (Rs. 124K) double the Median (Rs. 63K)?</p>
+              <p class="text-slate-300 leading-relaxed">Revenue exhibits extreme positive skewness caused by blockbuster
+                In-Store promotions (e.g. PC0003: Rs. 954K, PC0002: Rs. 788K). The median is a more representative
+                baseline for standard operational expectations.</p>
+            </div>
+            <div class="p-4 bg-slate-800/80 rounded-lg border border-slate-700 space-y-1.5">
+              <p class="font-bold text-cyan-300">Q2: How did you safeguard against ZeroDivisionError in Python?</p>
+              <p class="text-slate-300 leading-relaxed">Using <code
+                  class="text-cyan-200">numpy.where(df['Spend'] > 0, df['Revenue'] / df['Spend'], 0.0)</code> for ROAS,
+                CTR, and Conversion Rate. This guarantees vector safety without throwing runtime exceptions.</p>
+            </div>
+            <div class="p-4 bg-slate-800/80 rounded-lg border border-slate-700 space-y-1.5">
+              <p class="font-bold text-cyan-300">Q3: Why impute missing Spend with Median instead of Mean?</p>
+              <p class="text-slate-300 leading-relaxed">The arithmetic mean is pulled upwards by outlier campaigns.
+                Median (Rs. 13,535.24) represents the true 50th percentile of typical campaign budgets without
+                introducing artificial inflation.</p>
+            </div>
+            <div class="p-4 bg-slate-800/80 rounded-lg border border-slate-700 space-y-1.5">
+              <p class="font-bold text-cyan-300">Q4: What is the primary commercial recommendation?</p>
+              <p class="text-slate-300 leading-relaxed">Reallocate 40% of Facebook's budget (~Rs. 125K) into
+                high-performing SMS (12.68x ROAS) and physical In-Store visual merchandising (27.84x ROAS) for an
+                estimated +Rs. 1.18M net revenue lift.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full 14-Section Project Report Reader -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 space-y-8 text-slate-800 leading-relaxed">
+          <div
+            class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <span class="text-xs uppercase font-bold text-cyan-600 tracking-wider">Formal Academic Submission</span>
+              <h2 class="text-2xl font-bold text-slate-900 mt-1">Project Report: Evaluating Promotional Campaign
+                Performance</h2>
+              <p class="text-xs text-slate-500 mt-1">BrightWave Retail • Course: BBA Semester III — Python for Data
+                Analytics for Business (Indian Market)</p>
+            </div>
+            <button onclick="downloadPowerPointPresentation()"
+              class="download-ppt-btn flex items-center space-x-1.5 px-3.5 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm whitespace-nowrap cursor-pointer flex-shrink-0">
+              <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download PPT (.pptx)</span>
+            </button>
+          </div>
+
+          <div class="prose max-w-none text-xs md:text-sm space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-l-4 border-cyan-500 pl-3">1. Executive Summary</h3>
+            <p>BrightWave Retail executed 148 verified marketing campaigns across five channels and five promotional
+              types between January and September 2026. Across the portfolio, BrightWave invested Rs. 2,045,582.47 in
+              promotional spend, generating Rs. 18,452,391.82 in total revenue, delivering an overall portfolio ROAS of
+              9.02x. In-Store promotions drove 57.1% of revenue with a 27.84x ROAS, while Facebook underperformed
+              severely at 3.25x ROAS.</p>
+
+            <h3 class="text-base font-bold text-slate-900 border-l-4 border-cyan-500 pl-3">2. Objectives</h3>
+            <ul class="list-disc list-inside space-y-1 text-slate-600">
+              <li>Clean and harmonize 150 historical records, eliminating duplicates and standardizing text.</li>
+              <li>Engineer standardized funnel metrics: Click-Through Rate (CTR), Conversion Rate (CVR), and ROAS.</li>
+              <li>Evaluate cross-channel and seasonal performance dynamics using descriptive and visual analytics.</li>
+              <li>Formulate evidence-based budget reallocations to improve return on investment.</li>
+            </ul>
+
+            <h3 class="text-base font-bold text-slate-900 border-l-4 border-cyan-500 pl-3">3. Dataset Description &
+              Hygiene</h3>
+            <p>The unit of observation is an individual promotional campaign. The raw dataset contained 150 rows. Two
+              duplicate rows were dropped (PC0019 and PC0065). Missing numerical fields (Spend and Leads) were imputed
+              using medians (Rs. 13,535.24 and 298 leads respectively). Categorical inconsistencies were resolved across
+              Channel, Campaign Type, Region, and Product Category.</p>
+
+            <h3 class="text-base font-bold text-slate-900 border-l-4 border-cyan-500 pl-3">4. Four Core Strategic
+              Findings</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                <p class="font-bold text-slate-800">1. Physical Retail Foot-Traffic Fortress</p>
+                <p class="text-slate-600 text-xs mt-1">In-Store produced Rs. 10.54M (57.1% of all revenue) at 27.84x
+                  average ROAS.</p>
+              </div>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                <p class="font-bold text-slate-800">2. The Facebook Budget Drain</p>
+                <p class="text-slate-600 text-xs mt-1">Absorbed Rs. 312K in spend but delivered only Rs. 789K in revenue
+                  (3.25x ROAS, 2.21% CTR).</p>
+              </div>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                <p class="font-bold text-slate-800">3. Direct-to-Consumer Efficiency</p>
+                <p class="text-slate-600 text-xs mt-1">SMS (12.68x ROAS) and Email (10.15x ROAS) demonstrate high
+                  conversion intent.</p>
+              </div>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                <p class="font-bold text-slate-800">4. Summer Peak Seasonality</p>
+                <p class="text-slate-600 text-xs mt-1">July (Rs. 3.13M) and June (Rs. 2.85M) generated over 32% of total
+                  nine-month revenue.</p>
+              </div>
+            </div>
+
+            <h3 class="text-base font-bold text-slate-900 border-l-4 border-cyan-500 pl-3">5. Strategic Business
+              Recommendations</h3>
+            <p>1. <strong>Reallocate Rs. 125,000 from Facebook to SMS & In-Store:</strong> Shift capital from
+              underperforming paid social into high-converting first-party CRM and physical POS displays.<br>
+              2. <strong>Omnichannel QR Flywheel:</strong> Capture in-store retail footfall into SMS/Email retention
+              flows with instant POS coupon codes.<br>
+              3. <strong>Synchronized Mid-Year Campaign Blitz:</strong> Heavy-up promotion budgets during June and July
+              to maximize peak seasonal consumer demand.<br>
+              4. <strong>Automated ROAS Guardrails:</strong> Kill any digital campaign that drops below 4.0x ROAS after
+              Rs. 5,000 in spend.</p>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- Footer                                                                    -->
+  <!-- ========================================================================= -->
+  <footer class="bg-white border-t border-slate-200 py-4 mt-auto">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+      <p>© 2026 BrightWave Retail Analytics • Standalone Vercel Web Application</p>
+      <p>BBA Semester III — Python for Business Analytics (Indian Retail Market • INR)</p>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- Embedded 148 Cleaned Records Dataset (Zero Python Backend Needed)           -->
+  <!-- ========================================================================= -->
+  <script id="cleaned-promotion-data" type="application/json">
+[
+  {"id":"PC0001","date":"2026-07-13","type":"Discount Offer","channel":"Facebook","region":"West","category":"Personal Care","spend":6103.22,"impressions":11068,"clicks":296,"leads":79,"conversions":13,"revenue":7080.58,"month":"July","month_num":7,"ctr":2.67,"cvr":4.39,"roas":1.16},
+  {"id":"PC0002","date":"2026-07-19","type":"New Product Launch","channel":"In-Store","region":"North","category":"Personal Care","spend":6508.21,"impressions":70966,"clicks":6235,"leads":1339,"conversions":561,"revenue":788632.13,"month":"July","month_num":7,"ctr":8.79,"cvr":9.0,"roas":121.18},
+  {"id":"PC0003","date":"2026-06-19","type":"New Product Launch","channel":"In-Store","region":"North","category":"Personal Care","spend":24747.21,"impressions":75694,"clicks":6514,"leads":1223,"conversions":544,"revenue":954370.68,"month":"June","month_num":6,"ctr":8.61,"cvr":8.35,"roas":38.56},
+  {"id":"PC0004","date":"2026-04-06","type":"Referral Offer","channel":"SMS","region":"North","category":"Household","spend":23747.47,"impressions":22600,"clicks":1792,"leads":316,"conversions":101,"revenue":80451.09,"month":"April","month_num":4,"ctr":7.93,"cvr":5.64,"roas":3.39},
+  {"id":"PC0005","date":"2026-01-14","type":"Festival Campaign","channel":"Facebook","region":"East","category":"Beverages","spend":6910.19,"impressions":48869,"clicks":545,"leads":56,"conversions":18,"revenue":6157.79,"month":"January","month_num":1,"ctr":1.12,"cvr":3.3,"roas":0.89},
+  {"id":"PC0006","date":"2026-05-10","type":"Festival Campaign","channel":"In-Store","region":"South","category":"Personal Care","spend":2231.41,"impressions":64336,"clicks":5244,"leads":1310,"conversions":277,"revenue":238603.03,"month":"May","month_num":5,"ctr":8.15,"cvr":5.28,"roas":106.93},
+  {"id":"PC0007","date":"2026-05-22","type":"New Product Launch","channel":"Instagram","region":"West","category":"Personal Care","spend":18690.21,"impressions":41364,"clicks":1318,"leads":218,"conversions":35,"revenue":18098.53,"month":"May","month_num":5,"ctr":3.19,"cvr":2.66,"roas":0.97},
+  {"id":"PC0008","date":"2026-05-02","type":"Referral Offer","channel":"In-Store","region":"South","category":"Household","spend":2209.81,"impressions":74008,"clicks":6769,"leads":1014,"conversions":205,"revenue":279680.58,"month":"May","month_num":5,"ctr":9.15,"cvr":3.03,"roas":126.56},
+  {"id":"PC0009","date":"2026-04-21","type":"Discount Offer","channel":"SMS","region":"West","category":"Grocery","spend":5097.83,"impressions":52292,"clicks":3924,"leads":996,"conversions":398,"revenue":605662.74,"month":"April","month_num":4,"ctr":7.5,"cvr":10.14,"roas":118.81},
+  {"id":"PC0010","date":"2026-07-12","type":"New Product Launch","channel":"Email","region":"West","category":"Household","spend":16594.09,"impressions":71542,"clicks":3448,"leads":298,"conversions":303,"revenue":456754.33,"month":"July","month_num":7,"ctr":4.82,"cvr":8.79,"roas":27.53},
+  {"id":"PC0011","date":"2026-08-31","type":"Referral Offer","channel":"In-Store","region":"West","category":"Grocery","spend":5034.31,"impressions":36195,"clicks":3424,"leads":995,"conversions":131,"revenue":167862.32,"month":"August","month_num":8,"ctr":9.46,"cvr":3.83,"roas":33.34},
+  {"id":"PC0012","date":"2026-07-26","type":"Festival Campaign","channel":"SMS","region":"North","category":"Household","spend":14135.51,"impressions":50730,"clicks":2836,"leads":567,"conversions":137,"revenue":121579.74,"month":"July","month_num":7,"ctr":5.59,"cvr":4.83,"roas":8.6},
+  {"id":"PC0013","date":"2026-03-23","type":"Referral Offer","channel":"Facebook","region":"West","category":"Grocery","spend":3222.51,"impressions":57965,"clicks":2337,"leads":645,"conversions":150,"revenue":74786.78,"month":"March","month_num":3,"ctr":4.03,"cvr":6.42,"roas":23.21},
+  {"id":"PC0014","date":"2026-06-09","type":"Loyalty Programme","channel":"Instagram","region":"North","category":"Grocery","spend":24714.91,"impressions":33639,"clicks":1135,"leads":238,"conversions":61,"revenue":70159.62,"month":"June","month_num":6,"ctr":3.37,"cvr":5.37,"roas":2.84},
+  {"id":"PC0015","date":"2026-01-17","type":"New Product Launch","channel":"Instagram","region":"South","category":"Personal Care","spend":24822.46,"impressions":66548,"clicks":3112,"leads":892,"conversions":305,"revenue":270027.33,"month":"January","month_num":1,"ctr":4.68,"cvr":9.8,"roas":10.88},
+  {"id":"PC0016","date":"2026-01-02","type":"Referral Offer","channel":"Email","region":"North","category":"Beverages","spend":4831.1,"impressions":14647,"clicks":804,"leads":239,"conversions":100,"revenue":26083.05,"month":"January","month_num":1,"ctr":5.49,"cvr":12.44,"roas":5.4},
+  {"id":"PC0017","date":"2026-09-06","type":"New Product Launch","channel":"Facebook","region":"West","category":"Household","spend":13439.6,"impressions":17849,"clicks":360,"leads":106,"conversions":14,"revenue":24753.8,"month":"September","month_num":9,"ctr":2.02,"cvr":3.89,"roas":1.84},
+  {"id":"PC0018","date":"2026-07-03","type":"Festival Campaign","channel":"Email","region":"North","category":"Personal Care","spend":13017.61,"impressions":23922,"clicks":1308,"leads":316,"conversions":133,"revenue":214433.41,"month":"July","month_num":7,"ctr":5.47,"cvr":10.17,"roas":16.47},
+  {"id":"PC0019","date":"2026-06-15","type":"New Product Launch","channel":"Instagram","region":"South","category":"Grocery","spend":16208.98,"impressions":74852,"clicks":700,"leads":63,"conversions":10,"revenue":14012.71,"month":"June","month_num":6,"ctr":0.94,"cvr":1.43,"roas":0.86},
+  {"id":"PC0020","date":"2026-09-13","type":"New Product Launch","channel":"SMS","region":"West","category":"Grocery","spend":8120.38,"impressions":26082,"clicks":989,"leads":254,"conversions":61,"revenue":85713.18,"month":"September","month_num":9,"ctr":3.79,"cvr":6.17,"roas":10.56},
+  {"id":"PC0021","date":"2026-02-05","type":"Referral Offer","channel":"In-Store","region":"West","category":"Grocery","spend":14959.68,"impressions":43800,"clicks":3162,"leads":273,"conversions":98,"revenue":134349.09,"month":"February","month_num":2,"ctr":7.22,"cvr":3.1,"roas":8.98},
+  {"id":"PC0022","date":"2026-02-27","type":"Loyalty Programme","channel":"Instagram","region":"West","category":"Beverages","spend":13535.24,"impressions":65409,"clicks":2050,"leads":365,"conversions":118,"revenue":44200.07,"month":"February","month_num":2,"ctr":3.13,"cvr":5.76,"roas":3.27},
+  {"id":"PC0023","date":"2026-05-13","type":"Loyalty Programme","channel":"Instagram","region":"South","category":"Personal Care","spend":16737.68,"impressions":63242,"clicks":1688,"leads":267,"conversions":91,"revenue":159040.34,"month":"May","month_num":5,"ctr":2.67,"cvr":5.39,"roas":9.5},
+  {"id":"PC0024","date":"2026-08-02","type":"Festival Campaign","channel":"SMS","region":"North","category":"Grocery","spend":8592.37,"impressions":6621,"clicks":412,"leads":121,"conversions":23,"revenue":38869.95,"month":"August","month_num":8,"ctr":6.22,"cvr":5.58,"roas":4.52},
+  {"id":"PC0025","date":"2026-03-26","type":"Festival Campaign","channel":"Instagram","region":"West","category":"Beverages","spend":15280.32,"impressions":50096,"clicks":1636,"leads":314,"conversions":111,"revenue":67760.94,"month":"March","month_num":3,"ctr":3.27,"cvr":6.78,"roas":4.43},
+  {"id":"PC0026","date":"2026-03-01","type":"Discount Offer","channel":"In-Store","region":"East","category":"Household","spend":9187.75,"impressions":45420,"clicks":2747,"leads":311,"conversions":65,"revenue":50032.32,"month":"March","month_num":3,"ctr":6.05,"cvr":2.37,"roas":5.45},
+  {"id":"PC0027","date":"2026-06-16","type":"Festival Campaign","channel":"SMS","region":"North","category":"Household","spend":17350.59,"impressions":65513,"clicks":4610,"leads":544,"conversions":178,"revenue":153630.28,"month":"June","month_num":6,"ctr":7.04,"cvr":3.86,"roas":8.85},
+  {"id":"PC0028","date":"2026-08-06","type":"Festival Campaign","channel":"Facebook","region":"West","category":"Beverages","spend":8212.72,"impressions":35370,"clicks":428,"leads":63,"conversions":18,"revenue":10752.84,"month":"August","month_num":8,"ctr":1.21,"cvr":4.21,"roas":1.31},
+  {"id":"PC0029","date":"2026-03-01","type":"Referral Offer","channel":"Facebook","region":"North","category":"Household","spend":6782.9,"impressions":26738,"clicks":181,"leads":16,"conversions":3,"revenue":5311.04,"month":"March","month_num":3,"ctr":0.68,"cvr":1.66,"roas":0.78},
+  {"id":"PC0030","date":"2026-01-28","type":"Loyalty Programme","channel":"Email","region":"West","category":"Personal Care","spend":16969.35,"impressions":47403,"clicks":2642,"leads":680,"conversions":212,"revenue":164642.36,"month":"January","month_num":1,"ctr":5.57,"cvr":8.02,"roas":9.7},
+  {"id":"PC0031","date":"2026-08-15","type":"Loyalty Programme","channel":"Instagram","region":"East","category":"Beverages","spend":2972.2,"impressions":23204,"clicks":1202,"leads":120,"conversions":41,"revenue":62743.54,"month":"August","month_num":8,"ctr":5.18,"cvr":3.41,"roas":21.11},
+  {"id":"PC0032","date":"2026-01-13","type":"New Product Launch","channel":"In-Store","region":"West","category":"Household","spend":24990.43,"impressions":29217,"clicks":379,"leads":49,"conversions":20,"revenue":9309.67,"month":"January","month_num":1,"ctr":1.3,"cvr":5.28,"roas":0.37},
+  {"id":"PC0033","date":"2026-04-15","type":"Loyalty Programme","channel":"Email","region":"South","category":"Personal Care","spend":15230.97,"impressions":11367,"clicks":413,"leads":83,"conversions":32,"revenue":44626.29,"month":"April","month_num":4,"ctr":3.63,"cvr":7.75,"roas":2.93},
+  {"id":"PC0034","date":"2026-06-23","type":"Festival Campaign","channel":"In-Store","region":"South","category":"Household","spend":18619.38,"impressions":11269,"clicks":768,"leads":134,"conversions":23,"revenue":23897.66,"month":"June","month_num":6,"ctr":6.81,"cvr":2.99,"roas":1.28},
+  {"id":"PC0035","date":"2026-03-26","type":"Festival Campaign","channel":"Email","region":"East","category":"Beverages","spend":19821.92,"impressions":27909,"clicks":1041,"leads":242,"conversions":53,"revenue":51389.05,"month":"March","month_num":3,"ctr":3.73,"cvr":5.09,"roas":2.59},
+  {"id":"PC0036","date":"2026-04-28","type":"Festival Campaign","channel":"In-Store","region":"North","category":"Grocery","spend":5377.36,"impressions":69148,"clicks":5721,"leads":820,"conversions":355,"revenue":590902.44,"month":"April","month_num":4,"ctr":8.27,"cvr":6.2,"roas":109.89},
+  {"id":"PC0037","date":"2026-09-24","type":"Loyalty Programme","channel":"SMS","region":"West","category":"Grocery","spend":18629.51,"impressions":21045,"clicks":1789,"leads":320,"conversions":100,"revenue":63210.08,"month":"September","month_num":9,"ctr":8.5,"cvr":5.59,"roas":3.39},
+  {"id":"PC0038","date":"2026-06-09","type":"Festival Campaign","channel":"Email","region":"East","category":"Grocery","spend":22532.14,"impressions":44327,"clicks":1714,"leads":298,"conversions":74,"revenue":32612.69,"month":"June","month_num":6,"ctr":3.87,"cvr":4.32,"roas":1.45},
+  {"id":"PC0039","date":"2026-04-16","type":"Festival Campaign","channel":"SMS","region":"East","category":"Household","spend":7554.84,"impressions":67208,"clicks":3664,"leads":933,"conversions":243,"revenue":110881.92,"month":"April","month_num":4,"ctr":5.45,"cvr":6.63,"roas":14.68},
+  {"id":"PC0040","date":"2026-06-14","type":"Loyalty Programme","channel":"Facebook","region":"South","category":"Grocery","spend":13485.07,"impressions":42161,"clicks":1047,"leads":147,"conversions":30,"revenue":36617.39,"month":"June","month_num":6,"ctr":2.48,"cvr":2.87,"roas":2.72},
+  {"id":"PC0041","date":"2026-08-09","type":"New Product Launch","channel":"Instagram","region":"West","category":"Personal Care","spend":9709.81,"impressions":50530,"clicks":1735,"leads":239,"conversions":55,"revenue":49434.78,"month":"August","month_num":8,"ctr":3.43,"cvr":3.17,"roas":5.09},
+  {"id":"PC0042","date":"2026-06-20","type":"Festival Campaign","channel":"In-Store","region":"West","category":"Grocery","spend":5323.86,"impressions":38108,"clicks":4283,"leads":928,"conversions":201,"revenue":102876.42,"month":"June","month_num":6,"ctr":11.24,"cvr":4.69,"roas":19.32},
+  {"id":"PC0043","date":"2026-01-24","type":"Festival Campaign","channel":"In-Store","region":"South","category":"Beverages","spend":4963.68,"impressions":33555,"clicks":2098,"leads":584,"conversions":74,"revenue":34854.23,"month":"January","month_num":1,"ctr":6.25,"cvr":3.53,"roas":7.02},
+  {"id":"PC0044","date":"2026-06-11","type":"Discount Offer","channel":"In-Store","region":"South","category":"Grocery","spend":21980.06,"impressions":62224,"clicks":4392,"leads":1163,"conversions":321,"revenue":353330.93,"month":"June","month_num":6,"ctr":7.06,"cvr":7.31,"roas":16.08},
+  {"id":"PC0045","date":"2026-01-31","type":"Festival Campaign","channel":"Facebook","region":"North","category":"Personal Care","spend":23749.35,"impressions":61194,"clicks":2964,"leads":669,"conversions":68,"revenue":105484.22,"month":"January","month_num":1,"ctr":4.84,"cvr":2.29,"roas":4.44},
+  {"id":"PC0046","date":"2026-05-26","type":"Referral Offer","channel":"Instagram","region":"West","category":"Grocery","spend":24012.0,"impressions":37051,"clicks":911,"leads":247,"conversions":97,"revenue":56407.81,"month":"May","month_num":5,"ctr":2.46,"cvr":10.65,"roas":2.35},
+  {"id":"PC0047","date":"2026-07-06","type":"Discount Offer","channel":"In-Store","region":"East","category":"Beverages","spend":2114.38,"impressions":28117,"clicks":2133,"leads":392,"conversions":170,"revenue":134444.68,"month":"July","month_num":7,"ctr":7.59,"cvr":7.97,"roas":63.59},
+  {"id":"PC0048","date":"2026-01-27","type":"Loyalty Programme","channel":"Facebook","region":"South","category":"Household","spend":16051.83,"impressions":43347,"clicks":817,"leads":191,"conversions":73,"revenue":19648.48,"month":"January","month_num":1,"ctr":1.88,"cvr":8.94,"roas":1.22},
+  {"id":"PC0049","date":"2026-03-02","type":"Loyalty Programme","channel":"In-Store","region":"South","category":"Beverages","spend":20482.79,"impressions":49778,"clicks":2891,"leads":640,"conversions":255,"revenue":175860.91,"month":"March","month_num":3,"ctr":5.81,"cvr":8.82,"roas":8.59},
+  {"id":"PC0050","date":"2026-05-13","type":"Loyalty Programme","channel":"Instagram","region":"South","category":"Personal Care","spend":20707.38,"impressions":31354,"clicks":1172,"leads":211,"conversions":74,"revenue":45076.12,"month":"May","month_num":5,"ctr":3.74,"cvr":6.31,"roas":2.18},
+  {"id":"PC0051","date":"2026-03-24","type":"Referral Offer","channel":"Instagram","region":"West","category":"Household","spend":1914.77,"impressions":38762,"clicks":1410,"leads":345,"conversions":70,"revenue":110946.32,"month":"March","month_num":3,"ctr":3.64,"cvr":4.96,"roas":57.94},
+  {"id":"PC0052","date":"2026-09-01","type":"Loyalty Programme","channel":"SMS","region":"West","category":"Beverages","spend":20986.84,"impressions":74872,"clicks":5013,"leads":1184,"conversions":287,"revenue":240374.18,"month":"September","month_num":9,"ctr":6.7,"cvr":5.73,"roas":11.45},
+  {"id":"PC0053","date":"2026-09-03","type":"New Product Launch","channel":"Facebook","region":"South","category":"Household","spend":20432.46,"impressions":22366,"clicks":111,"leads":16,"conversions":4,"revenue":4968.41,"month":"September","month_num":9,"ctr":0.5,"cvr":3.6,"roas":0.24},
+  {"id":"PC0054","date":"2026-02-17","type":"Loyalty Programme","channel":"Instagram","region":"North","category":"Personal Care","spend":4286.25,"impressions":48941,"clicks":2003,"leads":539,"conversions":91,"revenue":103300.53,"month":"February","month_num":2,"ctr":4.09,"cvr":4.54,"roas":24.1},
+  {"id":"PC0055","date":"2026-08-30","type":"Discount Offer","channel":"In-Store","region":"North","category":"Grocery","spend":6571.41,"impressions":69129,"clicks":5446,"leads":1157,"conversions":329,"revenue":507246.11,"month":"August","month_num":8,"ctr":7.88,"cvr":6.04,"roas":77.19},
+  {"id":"PC0056","date":"2026-01-29","type":"Discount Offer","channel":"Email","region":"West","category":"Household","spend":22261.53,"impressions":45645,"clicks":2469,"leads":296,"conversions":95,"revenue":151457.78,"month":"January","month_num":1,"ctr":5.41,"cvr":3.85,"roas":6.8},
+  {"id":"PC0057","date":"2026-07-16","type":"New Product Launch","channel":"SMS","region":"East","category":"Beverages","spend":12054.49,"impressions":32259,"clicks":2577,"leads":210,"conversions":40,"revenue":61474.25,"month":"July","month_num":7,"ctr":7.99,"cvr":1.55,"roas":5.1},
+  {"id":"PC0058","date":"2026-03-31","type":"Discount Offer","channel":"SMS","region":"West","category":"Grocery","spend":20653.18,"impressions":17024,"clicks":1063,"leads":96,"conversions":18,"revenue":8350.55,"month":"March","month_num":3,"ctr":6.24,"cvr":1.69,"roas":0.4},
+  {"id":"PC0059","date":"2026-04-01","type":"Festival Campaign","channel":"In-Store","region":"North","category":"Household","spend":24406.68,"impressions":52149,"clicks":4719,"leads":1124,"conversions":145,"revenue":171206.6,"month":"April","month_num":4,"ctr":9.05,"cvr":3.07,"roas":7.01},
+  {"id":"PC0060","date":"2026-09-21","type":"Referral Offer","channel":"In-Store","region":"North","category":"Beverages","spend":18185.24,"impressions":18297,"clicks":1560,"leads":183,"conversions":36,"revenue":9799.3,"month":"September","month_num":9,"ctr":8.53,"cvr":2.31,"roas":0.54},
+  {"id":"PC0061","date":"2026-02-26","type":"Loyalty Programme","channel":"Email","region":"South","category":"Beverages","spend":8902.31,"impressions":59704,"clicks":3430,"leads":943,"conversions":110,"revenue":94589.2,"month":"February","month_num":2,"ctr":5.75,"cvr":3.21,"roas":10.63},
+  {"id":"PC0062","date":"2026-01-03","type":"Loyalty Programme","channel":"In-Store","region":"East","category":"Grocery","spend":16304.22,"impressions":41313,"clicks":4650,"leads":420,"conversions":49,"revenue":68857.81,"month":"January","month_num":1,"ctr":11.26,"cvr":1.05,"roas":4.22},
+  {"id":"PC0063","date":"2026-04-13","type":"New Product Launch","channel":"Instagram","region":"East","category":"Personal Care","spend":11309.33,"impressions":33297,"clicks":708,"leads":112,"conversions":29,"revenue":38576.18,"month":"April","month_num":4,"ctr":2.13,"cvr":4.1,"roas":3.41},
+  {"id":"PC0064","date":"2026-02-03","type":"Referral Offer","channel":"Email","region":"South","category":"Grocery","spend":15435.79,"impressions":76456,"clicks":3517,"leads":939,"conversions":379,"revenue":462635.58,"month":"February","month_num":2,"ctr":4.6,"cvr":10.78,"roas":29.97},
+  {"id":"PC0065","date":"2026-02-17","type":"Festival Campaign","channel":"Instagram","region":"West","category":"Household","spend":10590.14,"impressions":43824,"clicks":510,"leads":83,"conversions":22,"revenue":8653.17,"month":"February","month_num":2,"ctr":1.16,"cvr":4.31,"roas":0.82},
+  {"id":"PC0066","date":"2026-02-12","type":"Loyalty Programme","channel":"Instagram","region":"West","category":"Beverages","spend":15510.22,"impressions":69510,"clicks":2546,"leads":469,"conversions":72,"revenue":103413.33,"month":"February","month_num":2,"ctr":3.66,"cvr":2.83,"roas":6.67},
+  {"id":"PC0067","date":"2026-06-20","type":"Loyalty Programme","channel":"Instagram","region":"West","category":"Beverages","spend":13585.41,"impressions":52026,"clicks":3016,"leads":736,"conversions":222,"revenue":97968.2,"month":"June","month_num":6,"ctr":5.8,"cvr":7.36,"roas":7.21},
+  {"id":"PC0068","date":"2026-01-23","type":"New Product Launch","channel":"In-Store","region":"East","category":"Personal Care","spend":6882.47,"impressions":22617,"clicks":2045,"leads":467,"conversions":151,"revenue":213636.46,"month":"January","month_num":1,"ctr":9.04,"cvr":7.38,"roas":31.04},
+  {"id":"PC0069","date":"2026-08-09","type":"Festival Campaign","channel":"SMS","region":"East","category":"Household","spend":13123.59,"impressions":32058,"clicks":1367,"leads":298,"conversions":52,"revenue":41700.98,"month":"August","month_num":8,"ctr":4.26,"cvr":3.8,"roas":3.18},
+  {"id":"PC0070","date":"2026-07-26","type":"Referral Offer","channel":"Facebook","region":"East","category":"Household","spend":12887.41,"impressions":5141,"clicks":133,"leads":16,"conversions":4,"revenue":2906.35,"month":"July","month_num":7,"ctr":2.59,"cvr":3.01,"roas":0.23},
+  {"id":"PC0071","date":"2026-05-08","type":"Discount Offer","channel":"Instagram","region":"East","category":"Household","spend":8832.8,"impressions":63444,"clicks":2790,"leads":402,"conversions":93,"revenue":105734.22,"month":"May","month_num":5,"ctr":4.4,"cvr":3.33,"roas":11.97},
+  {"id":"PC0072","date":"2026-04-14","type":"Festival Campaign","channel":"In-Store","region":"East","category":"Beverages","spend":20051.19,"impressions":13425,"clicks":1239,"leads":134,"conversions":37,"revenue":62846.83,"month":"April","month_num":4,"ctr":9.23,"cvr":2.99,"roas":3.13},
+  {"id":"PC0073","date":"2026-09-06","type":"Referral Offer","channel":"In-Store","region":"North","category":"Beverages","spend":22817.68,"impressions":20444,"clicks":683,"leads":146,"conversions":50,"revenue":54000.03,"month":"September","month_num":9,"ctr":3.34,"cvr":7.32,"roas":2.37},
+  {"id":"PC0074","date":"2026-06-03","type":"Festival Campaign","channel":"In-Store","region":"West","category":"Grocery","spend":11463.08,"impressions":57429,"clicks":3728,"leads":581,"conversions":148,"revenue":253885.51,"month":"June","month_num":6,"ctr":6.49,"cvr":3.97,"roas":22.15},
+  {"id":"PC0075","date":"2026-03-16","type":"Discount Offer","channel":"In-Store","region":"West","category":"Beverages","spend":10547.84,"impressions":75065,"clicks":4469,"leads":851,"conversions":237,"revenue":384774.32,"month":"March","month_num":3,"ctr":5.95,"cvr":5.3,"roas":36.48},
+  {"id":"PC0076","date":"2026-07-16","type":"Festival Campaign","channel":"In-Store","region":"North","category":"Personal Care","spend":16095.24,"impressions":8038,"clicks":610,"leads":69,"conversions":10,"revenue":13519.29,"month":"July","month_num":7,"ctr":7.59,"cvr":1.64,"roas":0.84},
+  {"id":"PC0077","date":"2026-02-01","type":"Loyalty Programme","channel":"SMS","region":"South","category":"Beverages","spend":19899.06,"impressions":22570,"clicks":724,"leads":120,"conversions":15,"revenue":7058.44,"month":"February","month_num":2,"ctr":3.21,"cvr":2.07,"roas":0.35},
+  {"id":"PC0078","date":"2026-05-11","type":"Festival Campaign","channel":"SMS","region":"South","category":"Beverages","spend":9391.37,"impressions":42767,"clicks":2167,"leads":271,"conversions":88,"revenue":71875.85,"month":"May","month_num":5,"ctr":5.07,"cvr":4.06,"roas":7.65},
+  {"id":"PC0079","date":"2026-06-14","type":"Discount Offer","channel":"In-Store","region":"West","category":"Beverages","spend":22279.38,"impressions":41697,"clicks":2889,"leads":490,"conversions":122,"revenue":163082.94,"month":"June","month_num":6,"ctr":6.93,"cvr":4.22,"roas":7.32},
+  {"id":"PC0080","date":"2026-06-16","type":"Loyalty Programme","channel":"Email","region":"South","category":"Grocery","spend":12100.95,"impressions":37948,"clicks":1587,"leads":296,"conversions":51,"revenue":60725.57,"month":"June","month_num":6,"ctr":4.18,"cvr":3.21,"roas":5.02},
+  {"id":"PC0081","date":"2026-09-04","type":"Discount Offer","channel":"In-Store","region":"South","category":"Beverages","spend":7614.54,"impressions":14727,"clicks":1298,"leads":199,"conversions":87,"revenue":121000.72,"month":"September","month_num":9,"ctr":8.81,"cvr":6.7,"roas":15.89},
+  {"id":"PC0082","date":"2026-08-29","type":"Discount Offer","channel":"Facebook","region":"East","category":"Grocery","spend":10601.99,"impressions":25720,"clicks":324,"leads":63,"conversions":24,"revenue":21352.52,"month":"August","month_num":8,"ctr":1.26,"cvr":7.41,"roas":2.01},
+  {"id":"PC0083","date":"2026-06-15","type":"New Product Launch","channel":"Facebook","region":"South","category":"Grocery","spend":17660.32,"impressions":66359,"clicks":2287,"leads":333,"conversions":46,"revenue":27218.23,"month":"June","month_num":6,"ctr":3.45,"cvr":2.01,"roas":1.54},
+  {"id":"PC0084","date":"2026-01-17","type":"Festival Campaign","channel":"Instagram","region":"West","category":"Household","spend":19332.76,"impressions":58680,"clicks":2971,"leads":791,"conversions":150,"revenue":163023.58,"month":"January","month_num":1,"ctr":5.06,"cvr":5.05,"roas":8.43},
+  {"id":"PC0085","date":"2026-09-23","type":"Loyalty Programme","channel":"Facebook","region":"North","category":"Household","spend":13535.24,"impressions":20430,"clicks":190,"leads":21,"conversions":3,"revenue":1274.46,"month":"September","month_num":9,"ctr":0.93,"cvr":1.58,"roas":0.09},
+  {"id":"PC0086","date":"2026-09-14","type":"Loyalty Programme","channel":"In-Store","region":"West","category":"Beverages","spend":11551.51,"impressions":54349,"clicks":5152,"leads":748,"conversions":223,"revenue":133665.36,"month":"September","month_num":9,"ctr":9.48,"cvr":4.33,"roas":11.57},
+  {"id":"PC0087","date":"2026-04-24","type":"Referral Offer","channel":"Email","region":"South","category":"Grocery","spend":11561.91,"impressions":31675,"clicks":1965,"leads":473,"conversions":81,"revenue":74902.07,"month":"April","month_num":4,"ctr":6.2,"cvr":4.12,"roas":6.48},
+  {"id":"PC0088","date":"2026-04-12","type":"New Product Launch","channel":"Facebook","region":"South","category":"Household","spend":4541.27,"impressions":63686,"clicks":1453,"leads":288,"conversions":53,"revenue":40384.1,"month":"April","month_num":4,"ctr":2.28,"cvr":3.65,"roas":8.89},
+  {"id":"PC0089","date":"2026-04-18","type":"Discount Offer","channel":"Email","region":"West","category":"Personal Care","spend":6481.14,"impressions":51631,"clicks":2585,"leads":428,"conversions":173,"revenue":222031.24,"month":"April","month_num":4,"ctr":5.01,"cvr":6.69,"roas":34.26},
+  {"id":"PC0090","date":"2026-05-27","type":"Loyalty Programme","channel":"SMS","region":"South","category":"Grocery","spend":23622.4,"impressions":68026,"clicks":4780,"leads":1235,"conversions":512,"revenue":887942.08,"month":"May","month_num":5,"ctr":7.03,"cvr":10.71,"roas":37.59},
+  {"id":"PC0091","date":"2026-08-20","type":"New Product Launch","channel":"Facebook","region":"West","category":"Grocery","spend":15760.41,"impressions":69611,"clicks":1322,"leads":188,"conversions":45,"revenue":55059.4,"month":"August","month_num":8,"ctr":1.9,"cvr":3.4,"roas":3.49},
+  {"id":"PC0092","date":"2026-06-20","type":"Loyalty Programme","channel":"In-Store","region":"West","category":"Household","spend":13361.06,"impressions":71031,"clicks":5426,"leads":1349,"conversions":165,"revenue":192196.47,"month":"June","month_num":6,"ctr":7.64,"cvr":3.04,"roas":14.38},
+  {"id":"PC0093","date":"2026-08-21","type":"New Product Launch","channel":"Instagram","region":"North","category":"Personal Care","spend":9189.05,"impressions":20493,"clicks":515,"leads":126,"conversions":19,"revenue":21736.8,"month":"August","month_num":8,"ctr":2.51,"cvr":3.69,"roas":2.37},
+  {"id":"PC0094","date":"2026-05-12","type":"Loyalty Programme","channel":"Instagram","region":"East","category":"Grocery","spend":19406.1,"impressions":70263,"clicks":2874,"leads":321,"conversions":54,"revenue":85756.72,"month":"May","month_num":5,"ctr":4.09,"cvr":1.88,"roas":4.42},
+  {"id":"PC0095","date":"2026-09-25","type":"Discount Offer","channel":"In-Store","region":"North","category":"Beverages","spend":16502.78,"impressions":19227,"clicks":1271,"leads":190,"conversions":71,"revenue":38125.29,"month":"September","month_num":9,"ctr":6.61,"cvr":5.59,"roas":2.31},
+  {"id":"PC0096","date":"2026-06-08","type":"Loyalty Programme","channel":"Instagram","region":"East","category":"Household","spend":1537.55,"impressions":74109,"clicks":1999,"leads":361,"conversions":46,"revenue":61895.75,"month":"June","month_num":6,"ctr":2.7,"cvr":2.3,"roas":40.26},
+  {"id":"PC0097","date":"2026-01-15","type":"Discount Offer","channel":"SMS","region":"South","category":"Beverages","spend":2991.19,"impressions":5526,"clicks":433,"leads":75,"conversions":14,"revenue":17532.01,"month":"January","month_num":1,"ctr":7.84,"cvr":3.23,"roas":5.86},
+  {"id":"PC0098","date":"2026-07-25","type":"Loyalty Programme","channel":"In-Store","region":"East","category":"Household","spend":17544.43,"impressions":61844,"clicks":4887,"leads":675,"conversions":297,"revenue":374296.03,"month":"July","month_num":7,"ctr":7.9,"cvr":6.08,"roas":21.33},
+  {"id":"PC0099","date":"2026-07-27","type":"New Product Launch","channel":"Email","region":"East","category":"Personal Care","spend":16441.58,"impressions":50332,"clicks":1885,"leads":560,"conversions":60,"revenue":20553.23,"month":"July","month_num":7,"ctr":3.75,"cvr":3.18,"roas":1.25},
+  {"id":"PC0100","date":"2026-04-02","type":"New Product Launch","channel":"Facebook","region":"South","category":"Personal Care","spend":2129.43,"impressions":44104,"clicks":1537,"leads":321,"conversions":96,"revenue":152630.04,"month":"April","month_num":4,"ctr":3.48,"cvr":6.25,"roas":71.68},
+  {"id":"PC0101","date":"2026-07-12","type":"Referral Offer","channel":"Facebook","region":"North","category":"Grocery","spend":17810.66,"impressions":62345,"clicks":1395,"leads":310,"conversions":73,"revenue":23723.83,"month":"July","month_num":7,"ctr":2.24,"cvr":5.23,"roas":1.33},
+  {"id":"PC0102","date":"2026-04-21","type":"New Product Launch","channel":"In-Store","region":"North","category":"Personal Care","spend":8489.76,"impressions":54554,"clicks":4088,"leads":918,"conversions":122,"revenue":57837.63,"month":"April","month_num":4,"ctr":7.49,"cvr":2.98,"roas":6.81},
+  {"id":"PC0103","date":"2026-08-26","type":"Discount Offer","channel":"Facebook","region":"South","category":"Beverages","spend":3491.42,"impressions":19694,"clicks":115,"leads":28,"conversions":7,"revenue":3329.75,"month":"August","month_num":8,"ctr":0.58,"cvr":6.09,"roas":0.95},
+  {"id":"PC0104","date":"2026-03-31","type":"Festival Campaign","channel":"SMS","region":"North","category":"Household","spend":11917.45,"impressions":58590,"clicks":3017,"leads":300,"conversions":124,"revenue":162854.31,"month":"March","month_num":3,"ctr":5.15,"cvr":4.11,"roas":13.66},
+  {"id":"PC0105","date":"2026-02-02","type":"New Product Launch","channel":"Instagram","region":"East","category":"Grocery","spend":11860.98,"impressions":56919,"clicks":1664,"leads":396,"conversions":89,"revenue":88232.52,"month":"February","month_num":2,"ctr":2.92,"cvr":5.35,"roas":7.44},
+  {"id":"PC0106","date":"2026-06-08","type":"Discount Offer","channel":"Facebook","region":"South","category":"Beverages","spend":17283.95,"impressions":66156,"clicks":1007,"leads":214,"conversions":35,"revenue":46535.83,"month":"June","month_num":6,"ctr":1.52,"cvr":3.48,"roas":2.69},
+  {"id":"PC0107","date":"2026-07-07","type":"New Product Launch","channel":"SMS","region":"North","category":"Grocery","spend":1914.4,"impressions":66828,"clicks":3744,"leads":496,"conversions":55,"revenue":79066.1,"month":"July","month_num":7,"ctr":5.6,"cvr":1.47,"roas":41.3},
+  {"id":"PC0108","date":"2026-04-11","type":"Loyalty Programme","channel":"Email","region":"East","category":"Household","spend":15648.14,"impressions":36634,"clicks":906,"leads":251,"conversions":67,"revenue":63225.19,"month":"April","month_num":4,"ctr":2.47,"cvr":7.4,"roas":4.04},
+  {"id":"PC0109","date":"2026-06-12","type":"Discount Offer","channel":"In-Store","region":"West","category":"Grocery","spend":24563.95,"impressions":46526,"clicks":3745,"leads":774,"conversions":196,"revenue":154682.26,"month":"June","month_num":6,"ctr":8.05,"cvr":5.23,"roas":6.3},
+  {"id":"PC0110","date":"2026-04-24","type":"Loyalty Programme","channel":"Email","region":"East","category":"Grocery","spend":21582.92,"impressions":68481,"clicks":2983,"leads":298,"conversions":54,"revenue":43736.24,"month":"April","month_num":4,"ctr":4.36,"cvr":1.81,"roas":2.03},
+  {"id":"PC0111","date":"2026-08-04","type":"Loyalty Programme","channel":"Instagram","region":"North","category":"Beverages","spend":24306.2,"impressions":64103,"clicks":2131,"leads":259,"conversions":39,"revenue":68809.48,"month":"August","month_num":8,"ctr":3.32,"cvr":1.83,"roas":2.83},
+  {"id":"PC0112","date":"2026-02-19","type":"Festival Campaign","channel":"Facebook","region":"West","category":"Grocery","spend":14577.79,"impressions":78893,"clicks":2636,"leads":280,"conversions":30,"revenue":15090.05,"month":"February","month_num":2,"ctr":3.34,"cvr":1.14,"roas":1.04},
+  {"id":"PC0113","date":"2026-01-26","type":"Festival Campaign","channel":"Email","region":"South","category":"Grocery","spend":24362.15,"impressions":14022,"clicks":417,"leads":103,"conversions":16,"revenue":15192.7,"month":"January","month_num":1,"ctr":2.97,"cvr":3.84,"roas":0.62},
+  {"id":"PC0114","date":"2026-07-05","type":"New Product Launch","channel":"In-Store","region":"South","category":"Grocery","spend":2779.61,"impressions":30648,"clicks":2540,"leads":650,"conversions":128,"revenue":184054.46,"month":"July","month_num":7,"ctr":8.29,"cvr":5.04,"roas":66.22},
+  {"id":"PC0115","date":"2026-06-13","type":"New Product Launch","channel":"SMS","region":"North","category":"Beverages","spend":19610.75,"impressions":26385,"clicks":1490,"leads":427,"conversions":57,"revenue":40292.67,"month":"June","month_num":6,"ctr":5.65,"cvr":3.83,"roas":2.05},
+  {"id":"PC0116","date":"2026-08-23","type":"Referral Offer","channel":"In-Store","region":"South","category":"Household","spend":21373.76,"impressions":21607,"clicks":1679,"leads":260,"conversions":28,"revenue":11455.35,"month":"August","month_num":8,"ctr":7.77,"cvr":1.67,"roas":0.54},
+  {"id":"PC0117","date":"2026-01-24","type":"Discount Offer","channel":"In-Store","region":"South","category":"Beverages","spend":19125.3,"impressions":45366,"clicks":4419,"leads":832,"conversions":250,"revenue":215994.15,"month":"January","month_num":1,"ctr":9.74,"cvr":5.66,"roas":11.29},
+  {"id":"PC0118","date":"2026-01-26","type":"Referral Offer","channel":"Email","region":"West","category":"Grocery","spend":15064.77,"impressions":15228,"clicks":675,"leads":63,"conversions":27,"revenue":25486.9,"month":"January","month_num":1,"ctr":4.43,"cvr":4.0,"roas":1.69},
+  {"id":"PC0119","date":"2026-07-27","type":"Discount Offer","channel":"Instagram","region":"North","category":"Household","spend":22045.56,"impressions":58287,"clicks":2530,"leads":348,"conversions":99,"revenue":138825.8,"month":"July","month_num":7,"ctr":4.34,"cvr":3.91,"roas":6.3},
+  {"id":"PC0120","date":"2026-06-29","type":"Referral Offer","channel":"Instagram","region":"East","category":"Household","spend":4786.4,"impressions":18245,"clicks":623,"leads":105,"conversions":38,"revenue":28044.17,"month":"June","month_num":6,"ctr":3.41,"cvr":6.1,"roas":5.86},
+  {"id":"PC0121","date":"2026-01-28","type":"Discount Offer","channel":"In-Store","region":"North","category":"Grocery","spend":4956.3,"impressions":29954,"clicks":1680,"leads":484,"conversions":104,"revenue":104266.22,"month":"January","month_num":1,"ctr":5.61,"cvr":6.19,"roas":21.04},
+  {"id":"PC0122","date":"2026-03-13","type":"New Product Launch","channel":"SMS","region":"North","category":"Personal Care","spend":5397.72,"impressions":6833,"clicks":585,"leads":151,"conversions":53,"revenue":23407.68,"month":"March","month_num":3,"ctr":8.56,"cvr":9.06,"roas":4.34},
+  {"id":"PC0123","date":"2026-07-11","type":"Festival Campaign","channel":"Email","region":"South","category":"Household","spend":10803.23,"impressions":11832,"clicks":545,"leads":85,"conversions":30,"revenue":18644.55,"month":"July","month_num":7,"ctr":4.61,"cvr":5.5,"roas":1.73},
+  {"id":"PC0124","date":"2026-09-24","type":"Referral Offer","channel":"In-Store","region":"South","category":"Personal Care","spend":5633.71,"impressions":12860,"clicks":1107,"leads":235,"conversions":46,"revenue":19687.0,"month":"September","month_num":9,"ctr":8.61,"cvr":4.16,"roas":3.49},
+  {"id":"PC0125","date":"2026-03-10","type":"Discount Offer","channel":"SMS","region":"West","category":"Household","spend":19666.46,"impressions":31155,"clicks":2614,"leads":433,"conversions":64,"revenue":37509.69,"month":"March","month_num":3,"ctr":8.39,"cvr":2.45,"roas":1.91},
+  {"id":"PC0126","date":"2026-07-08","type":"Discount Offer","channel":"In-Store","region":"East","category":"Household","spend":15403.02,"impressions":61559,"clicks":5720,"leads":1662,"conversions":589,"revenue":427799.78,"month":"July","month_num":7,"ctr":9.29,"cvr":10.3,"roas":27.77},
+  {"id":"PC0127","date":"2026-09-21","type":"Discount Offer","channel":"In-Store","region":"North","category":"Personal Care","spend":23543.63,"impressions":68267,"clicks":6326,"leads":738,"conversions":142,"revenue":163768.9,"month":"September","month_num":9,"ctr":9.27,"cvr":2.24,"roas":6.96},
+  {"id":"PC0128","date":"2026-02-22","type":"Referral Offer","channel":"Instagram","region":"East","category":"Personal Care","spend":24998.07,"impressions":59948,"clicks":2275,"leads":200,"conversions":55,"revenue":49379.94,"month":"February","month_num":2,"ctr":3.8,"cvr":2.42,"roas":1.98},
+  {"id":"PC0129","date":"2026-01-28","type":"Discount Offer","channel":"In-Store","region":"East","category":"Beverages","spend":9385.4,"impressions":19045,"clicks":1598,"leads":157,"conversions":43,"revenue":43922.93,"month":"January","month_num":1,"ctr":8.39,"cvr":2.69,"roas":4.68},
+  {"id":"PC0130","date":"2026-06-09","type":"Loyalty Programme","channel":"Instagram","region":"South","category":"Beverages","spend":17064.82,"impressions":63505,"clicks":3007,"leads":803,"conversions":182,"revenue":81312.64,"month":"June","month_num":6,"ctr":4.73,"cvr":6.05,"roas":4.76},
+  {"id":"PC0131","date":"2026-06-03","type":"Discount Offer","channel":"Instagram","region":"North","category":"Household","spend":11701.04,"impressions":36241,"clicks":1183,"leads":313,"conversions":95,"revenue":137780.71,"month":"June","month_num":6,"ctr":3.26,"cvr":8.03,"roas":11.78},
+  {"id":"PC0132","date":"2026-08-23","type":"Discount Offer","channel":"In-Store","region":"South","category":"Grocery","spend":18099.36,"impressions":68344,"clicks":5142,"leads":629,"conversions":243,"revenue":233195.07,"month":"August","month_num":8,"ctr":7.52,"cvr":4.73,"roas":12.88},
+  {"id":"PC0133","date":"2026-07-12","type":"Referral Offer","channel":"Instagram","region":"West","category":"Personal Care","spend":17635.72,"impressions":67373,"clicks":2042,"leads":431,"conversions":47,"revenue":67890.17,"month":"July","month_num":7,"ctr":3.03,"cvr":2.3,"roas":3.85},
+  {"id":"PC0134","date":"2026-01-31","type":"Loyalty Programme","channel":"In-Store","region":"West","category":"Household","spend":5440.34,"impressions":76290,"clicks":5108,"leads":707,"conversions":205,"revenue":111745.36,"month":"January","month_num":1,"ctr":6.7,"cvr":4.01,"roas":20.54},
+  {"id":"PC0135","date":"2026-01-19","type":"New Product Launch","channel":"Email","region":"East","category":"Household","spend":13266.65,"impressions":44302,"clicks":2312,"leads":463,"conversions":93,"revenue":58673.9,"month":"January","month_num":1,"ctr":5.22,"cvr":4.02,"roas":4.42},
+  {"id":"PC0136","date":"2026-04-07","type":"Festival Campaign","channel":"Facebook","region":"South","category":"Beverages","spend":11272.27,"impressions":45378,"clicks":1005,"leads":222,"conversions":42,"revenue":41503.08,"month":"April","month_num":4,"ctr":2.21,"cvr":4.18,"roas":3.68},
+  {"id":"PC0137","date":"2026-01-18","type":"Festival Campaign","channel":"Email","region":"South","category":"Grocery","spend":21085.86,"impressions":25017,"clicks":1364,"leads":358,"conversions":94,"revenue":27605.52,"month":"January","month_num":1,"ctr":5.45,"cvr":6.89,"roas":1.31},
+  {"id":"PC0138","date":"2026-06-30","type":"Referral Offer","channel":"Instagram","region":"East","category":"Beverages","spend":24370.44,"impressions":38078,"clicks":1318,"leads":241,"conversions":72,"revenue":77286.62,"month":"June","month_num":6,"ctr":3.46,"cvr":5.46,"roas":3.17},
+  {"id":"PC0139","date":"2026-06-29","type":"Discount Offer","channel":"Email","region":"East","category":"Beverages","spend":20683.35,"impressions":62463,"clicks":1020,"leads":236,"conversions":87,"revenue":156330.07,"month":"June","month_num":6,"ctr":1.63,"cvr":8.53,"roas":7.56},
+  {"id":"PC0140","date":"2026-02-12","type":"Loyalty Programme","channel":"Instagram","region":"East","category":"Household","spend":11259.71,"impressions":8397,"clicks":462,"leads":68,"conversions":22,"revenue":17988.02,"month":"February","month_num":2,"ctr":5.5,"cvr":4.76,"roas":1.6},
+  {"id":"PC0141","date":"2026-01-31","type":"Loyalty Programme","channel":"In-Store","region":"West","category":"Personal Care","spend":3050.76,"impressions":69617,"clicks":5705,"leads":1151,"conversions":158,"revenue":263975.0,"month":"January","month_num":1,"ctr":8.2,"cvr":2.77,"roas":86.53},
+  {"id":"PC0142","date":"2026-03-29","type":"Festival Campaign","channel":"In-Store","region":"South","category":"Grocery","spend":5790.09,"impressions":11364,"clicks":695,"leads":189,"conversions":62,"revenue":81992.87,"month":"March","month_num":3,"ctr":6.12,"cvr":8.92,"roas":14.16},
+  {"id":"PC0144","date":"2026-08-21","type":"Referral Offer","channel":"In-Store","region":"North","category":"Household","spend":13030.9,"impressions":48448,"clicks":3640,"leads":914,"conversions":143,"revenue":80830.42,"month":"August","month_num":8,"ctr":7.51,"cvr":3.93,"roas":6.2},
+  {"id":"PC0145","date":"2026-03-15","type":"Discount Offer","channel":"Facebook","region":"South","category":"Household","spend":4531.86,"impressions":24725,"clicks":821,"leads":196,"conversions":72,"revenue":98073.12,"month":"March","month_num":3,"ctr":3.32,"cvr":8.77,"roas":21.64},
+  {"id":"PC0146","date":"2026-03-25","type":"Loyalty Programme","channel":"In-Store","region":"North","category":"Grocery","spend":7186.52,"impressions":50255,"clicks":3308,"leads":960,"conversions":318,"revenue":248598.84,"month":"March","month_num":3,"ctr":6.58,"cvr":9.61,"roas":34.59},
+  {"id":"PC0147","date":"2026-09-26","type":"Discount Offer","channel":"Instagram","region":"South","category":"Household","spend":8625.21,"impressions":78492,"clicks":3293,"leads":412,"conversions":109,"revenue":46832.82,"month":"September","month_num":9,"ctr":4.2,"cvr":3.31,"roas":5.43},
+  {"id":"PC0149","date":"2026-09-03","type":"Festival Campaign","channel":"SMS","region":"South","category":"Beverages","spend":18751.41,"impressions":69499,"clicks":4023,"leads":881,"conversions":120,"revenue":98341.41,"month":"September","month_num":9,"ctr":5.79,"cvr":2.98,"roas":5.24},
+  {"id":"PC0150","date":"2026-04-14","type":"Loyalty Programme","channel":"Facebook","region":"South","category":"Grocery","spend":16467.52,"impressions":37388,"clicks":625,"leads":177,"conversions":56,"revenue":32050.94,"month":"April","month_num":4,"ctr":1.67,"cvr":8.96,"roas":1.95}
+]
+  </script>
+
+  <!-- ========================================================================= -->
+  <!-- Application Controller Script (Plotly.js + PptxGenJS + Filters)            -->
+  <!-- ========================================================================= -->
+  <script>
+    // ---------------------------------------------------------------------------
+    // Ingest Master Cleaned 148-Row Dataset directly from embedded script tag
+    // ---------------------------------------------------------------------------
+    const rawData = JSON.parse(document.getElementById('cleaned-promotion-data').textContent.trim());
+
+    let filteredData = [...rawData];
+    let currentSlide = 1;
+    const totalSlides = 6;
+    let tableCurrentPage = 1;
+    const tablePageSize = 15;
+
+    // ---------------------------------------------------------------------------
+    // Tab Controller
+    // ---------------------------------------------------------------------------
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active', 'bg-cyan-600', 'text-white', 'shadow-md', 'shadow-cyan-600/30');
+        el.classList.add('text-slate-300');
+      });
+
+      const targetTab = document.getElementById(`content-${tabId}`);
+      const targetBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (targetTab) targetTab.classList.add('active');
+      if (targetBtn) {
+        targetBtn.classList.add('active', 'bg-cyan-600', 'text-white', 'shadow-md', 'shadow-cyan-600/30');
+        targetBtn.classList.remove('text-slate-300');
+      }
+
+      if (tabId === 'analytics') {
+        setTimeout(updatePlotlyCharts, 50);
+      }
+    }
+
+    // ---------------------------------------------------------------------------
+    // Slide Presentation Controller
+    // ---------------------------------------------------------------------------
+    function goToSlide(n) {
+      currentSlide = n;
+      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+      const activeSlide = document.getElementById(`slide-${currentSlide}`);
+      if (activeSlide) activeSlide.classList.add('active');
+
+      const titles = [
+        "Executive Challenge & Scope",
+        "Data Cleaning & Single Source of Truth",
+        "Executive KPI Snapshot",
+        "Channel Performance & Capital Waste",
+        "Strategy Dynamics & Monthly Seasonality",
+        "Managerial Recommendations & Limitations"
+      ];
+      document.getElementById('slide-title-indicator').innerText = `Slide ${currentSlide} of ${totalSlides}: ${titles[currentSlide - 1]}`;
+      renderSlideDots();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+      else goToSlide(1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) goToSlide(currentSlide - 1);
+      else goToSlide(totalSlides);
+    }
+
+    function renderSlideDots() {
+      const container = document.getElementById('slide-dots');
+      if (!container) return;
+      container.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-2 h-2 rounded-full transition-all ${i === currentSlide ? 'bg-cyan-500 w-5' : 'bg-slate-300 hover:bg-slate-400'}`;
+        dot.onclick = () => goToSlide(i);
+        container.appendChild(dot);
+      }
+    }
+
+    // ---------------------------------------------------------------------------
+    // Filter Controller
+    // ---------------------------------------------------------------------------
+    function applyFilters() {
+      const reg = document.getElementById('filter-region').value;
+      const ch = document.getElementById('filter-channel').value;
+      const ty = document.getElementById('filter-type').value;
+      const mo = document.getElementById('filter-month').value;
+
+      filteredData = rawData.filter(d => {
+        return (reg === 'All' || d.region === reg) &&
+          (ch === 'All' || d.channel === ch) &&
+          (ty === 'All' || d.type === ty) &&
+          (mo === 'All' || d.month === mo);
+      });
+
+      document.getElementById('filtered-record-count').innerText = `${filteredData.length} / ${rawData.length} Campaigns`;
+
+      updateKPIs();
+      updatePlotlyCharts();
+      updateRecommendations();
+      tableCurrentPage = 1;
+      renderTable();
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-region').value = 'All';
+      document.getElementById('filter-channel').value = 'All';
+      document.getElementById('filter-type').value = 'All';
+      document.getElementById('filter-month').value = 'All';
+      applyFilters();
+    }
+
+    // ---------------------------------------------------------------------------
+    // KPI Controller
+    // ---------------------------------------------------------------------------
+    function updateKPIs() {
+      const totalSpend = filteredData.reduce((acc, d) => acc + d.spend, 0);
+      const totalRev = filteredData.reduce((acc, d) => acc + d.revenue, 0);
+      const roas = totalSpend > 0 ? (totalRev / totalSpend) : 0;
+      const totalClicks = filteredData.reduce((acc, d) => acc + d.clicks, 0);
+      const totalImpr = filteredData.reduce((acc, d) => acc + d.impressions, 0);
+      const totalConv = filteredData.reduce((acc, d) => acc + d.conversions, 0);
+
+      const ctr = totalImpr > 0 ? ((totalClicks / totalImpr) * 100) : 0;
+      const cvr = totalClicks > 0 ? ((totalConv / totalClicks) * 100) : 0;
+
+      document.getElementById('kpi-spend').innerText = `Rs. ${(totalSpend / 1e6).toFixed(2)}M`;
+      document.getElementById('kpi-revenue').innerText = `Rs. ${(totalRev / 1e6).toFixed(2)}M`;
+      document.getElementById('kpi-roas').innerText = `${roas.toFixed(2)}x`;
+      document.getElementById('kpi-conversions').innerText = totalConv.toLocaleString();
+      document.getElementById('kpi-ctr').innerText = `${ctr.toFixed(2)}%`;
+      document.getElementById('kpi-cvr').innerText = `${cvr.toFixed(2)}%`;
+
+      runSimulator();
+    }
+
+    // ---------------------------------------------------------------------------
+    // Dynamic Recommendation Engine Controller
+    // ---------------------------------------------------------------------------
+    function updateRecommendations() {
+      const container = document.getElementById('dynamic-recommendation-content');
+      if (filteredData.length === 0) {
+        container.innerHTML = `<div class="col-span-3 text-center py-2 text-slate-400">No campaigns match your selected filter criteria. Reset filters to view recommendations.</div>`;
+        return;
+      }
+
+      const channelStats = {};
+      filteredData.forEach(d => {
+        if (!channelStats[d.channel]) channelStats[d.channel] = { spend: 0, revenue: 0, conversions: 0 };
+        channelStats[d.channel].spend += d.spend;
+        channelStats[d.channel].revenue += d.revenue;
+        channelStats[d.channel].conversions += d.conversions;
+      });
+
+      let topROASChannel = '';
+      let maxROAS = -1;
+      let leakChannel = '';
+      let minROAS = 999999;
+
+      Object.keys(channelStats).forEach(c => {
+        const roas = channelStats[c].spend > 0 ? (channelStats[c].revenue / channelStats[c].spend) : 0;
+        if (roas > maxROAS) { maxROAS = roas; topROASChannel = c; }
+        if (roas < minROAS && channelStats[c].spend > 10000) { minROAS = roas; leakChannel = c; }
+      });
+
+      const typeStats = {};
+      filteredData.forEach(d => {
+        if (!typeStats[d.type]) typeStats[d.type] = { revenue: 0 };
+        typeStats[d.type].revenue += d.revenue;
+      });
+      let topType = Object.keys(typeStats).sort((a, b) => typeStats[b].revenue - typeStats[a].revenue)[0] || 'Discount Offer';
+
+      container.innerHTML = `
+        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700 space-y-1">
+          <p class="text-cyan-300 font-bold flex items-center space-x-1.5">
+            <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Scale-Up Winner</span>
+          </p>
+          <p class="text-slate-200 mt-1 leading-relaxed">
+            <strong>${topROASChannel || 'In-Store'}</strong> delivers top efficiency at <strong>${maxROAS > 0 ? maxROAS.toFixed(2) : '27.84'}x ROAS</strong> in this view. Increase allocation by 25%.
+          </p>
+        </div>
+        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700 space-y-1">
+          <p class="text-red-300 font-bold flex items-center space-x-1.5">
+            <svg class="w-4 h-4 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <span>Budget Leak Alert</span>
+          </p>
+          <p class="text-slate-200 mt-1 leading-relaxed">
+            ${leakChannel ? `<strong>${leakChannel}</strong> lags at <strong>${minROAS.toFixed(2)}x ROAS</strong>. Pause ad sets spending without conversion.` : `All channels performing above safety threshold.`}
+          </p>
+        </div>
+        <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700 space-y-1">
+          <p class="text-amber-300 font-bold flex items-center space-x-1.5">
+            <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+            <span>Strategy Driver</span>
+          </p>
+          <p class="text-slate-200 mt-1 leading-relaxed">
+            <strong>${topType}</strong> commands highest consumer demand (Rs. ${(typeStats[topType]?.revenue / 1e3 || 0).toFixed(0)}K). Prioritize for inventory clearance.
+          </p>
+        </div>
+      `;
+    }
+
+    // ---------------------------------------------------------------------------
+    // What-If Scenario Simulator Controller
+    // ---------------------------------------------------------------------------
+    function runSimulator() {
+      const slider = document.getElementById('reallocation-slider');
+      if (!slider) return;
+      const reallocAmount = parseFloat(slider.value) || 0;
+      document.getElementById('slider-realloc-val').innerText = `Rs. ${reallocAmount.toLocaleString()}`;
+
+      // Model: Facebook avg ROAS = 3.25x, SMS/In-Store blended target ROAS = 12.68x
+      const diffMultiplier = 12.68 - 3.25; // 9.43x net lift per rupee
+      const revenueLift = reallocAmount * diffMultiplier;
+
+      const baseRevenue = filteredData.reduce((a, c) => a + c.revenue, 0);
+      const baseSpend = filteredData.reduce((a, c) => a + c.spend, 0);
+      const simulatedRevenue = baseRevenue + revenueLift;
+      const simulatedROAS = baseSpend > 0 ? (simulatedRevenue / baseSpend) : 0;
+      const baseROAS = baseSpend > 0 ? (baseRevenue / baseSpend) : 0;
+
+      document.getElementById('sim-revenue-lift').innerText = `+Rs. ${(revenueLift / 1e6).toFixed(2)}M`;
+      document.getElementById('sim-total-revenue').innerText = `Rs. ${(simulatedRevenue / 1e6).toFixed(2)}M`;
+      document.getElementById('sim-new-roas').innerText = `Portfolio ROAS rises from ${baseROAS.toFixed(2)}x to ${simulatedROAS.toFixed(2)}x`;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Plotly.js Visualizations Controller (All in Rs.)
+    // ---------------------------------------------------------------------------
+    const plotlyConfig = { responsive: true, displayModeBar: false };
+    const plotlyLayoutBase = {
+      margin: { l: 48, r: 20, t: 24, b: 40 },
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      font: { family: 'ui-sans-serif, system-ui, -apple-system, sans-serif', size: 11, color: '#64748b' }
+    };
+
+    function updatePlotlyCharts() {
+      // 1. Channel Revenue vs Spend (Grouped Bar Chart)
+      const channelLabels = ['In-Store', 'SMS', 'Email', 'Instagram', 'Facebook'];
+      const chRev = channelLabels.map(ch => filteredData.filter(d => d.channel === ch).reduce((a, c) => a + c.revenue, 0) / 1e6);
+      const chSpend = channelLabels.map(ch => filteredData.filter(d => d.channel === ch).reduce((a, c) => a + c.spend, 0) / 1e6);
+
+      const traceRev = {
+        x: channelLabels,
+        y: chRev,
+        name: 'Revenue (Rs. M)',
+        type: 'bar',
+        marker: { color: '#0284c7', cornerradius: 4 },
+        hovertemplate: '%{x}<br>Revenue: Rs. %{y:.2f}M<extra></extra>'
+      };
+
+      const traceSpend = {
+        x: channelLabels,
+        y: chSpend,
+        name: 'Spend (Rs. M)',
+        type: 'bar',
+        marker: { color: '#94a3b8', cornerradius: 4 },
+        hovertemplate: '%{x}<br>Spend: Rs. %{y:.2f}M<extra></extra>'
+      };
+
+      const layout1 = {
+        ...plotlyLayoutBase,
+        barmode: 'group',
+        legend: { orientation: 'h', x: 0, y: 1.15, font: { size: 10 } },
+        xaxis: { gridcolor: 'transparent', linecolor: '#e2e8f0' },
+        yaxis: { gridcolor: '#f1f5f9', tickprefix: 'Rs. ', ticksuffix: 'M', linecolor: '#e2e8f0' }
+      };
+
+      Plotly.react('chartChannelRevSpend', [traceRev, traceSpend], layout1, plotlyConfig);
+
+      // 2. Monthly Trend (Line & Area Chart)
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'];
+      const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+      const mRev = months.map(m => filteredData.filter(d => d.month === m).reduce((a, c) => a + c.revenue, 0) / 1e6);
+      const mSpend = months.map(m => filteredData.filter(d => d.month === m).reduce((a, c) => a + c.spend, 0) / 1e6);
+
+      const traceMonthlyRev = {
+        x: monthShort,
+        y: mRev,
+        name: 'Revenue (Rs. M)',
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { color: '#0891b2', width: 3, shape: 'spline' },
+        marker: { size: 6, color: '#0891b2' },
+        fill: 'tozeroy',
+        fillcolor: 'rgba(8, 145, 178, 0.08)',
+        hovertemplate: '%{x} 2026<br>Revenue: Rs. %{y:.2f}M<extra></extra>'
+      };
+
+      const traceMonthlySpend = {
+        x: monthShort,
+        y: mSpend,
+        name: 'Spend (Rs. M)',
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { color: '#94a3b8', width: 2, dash: 'dot' },
+        marker: { size: 5, color: '#94a3b8' },
+        hovertemplate: '%{x} 2026<br>Spend: Rs. %{y:.2f}M<extra></extra>'
+      };
+
+      const layout2 = {
+        ...plotlyLayoutBase,
+        legend: { orientation: 'h', x: 0, y: 1.15, font: { size: 10 } },
+        xaxis: { gridcolor: 'transparent', linecolor: '#e2e8f0' },
+        yaxis: { gridcolor: '#f1f5f9', tickprefix: 'Rs. ', ticksuffix: 'M', linecolor: '#e2e8f0' }
+      };
+
+      Plotly.react('chartMonthlyTrend', [traceMonthlyRev, traceMonthlySpend], layout2, plotlyConfig);
+
+      // 3. Campaign Type Efficiency Breakdown (Horizontal Bar Chart)
+      const typeLabels = ['Discount Offer', 'New Product Launch', 'Loyalty Programme', 'Festival Campaign', 'Referral Offer'];
+      const typeRev = typeLabels.map(t => filteredData.filter(d => d.type === t).reduce((a, c) => a + c.revenue, 0) / 1e6);
+
+      const traceType = {
+        y: [...typeLabels].reverse(),
+        x: [...typeRev].reverse(),
+        type: 'bar',
+        orientation: 'h',
+        marker: {
+          color: ['#d97706', '#e11d48', '#6366f1', '#0369a1', '#0f766e'],
+          cornerradius: 4
+        },
+        hovertemplate: '%{y}<br>Revenue: Rs. %{x:.2f}M<extra></extra>'
+      };
+
+      const layout3 = {
+        ...plotlyLayoutBase,
+        margin: { l: 120, r: 20, t: 15, b: 35 },
+        xaxis: { gridcolor: '#f1f5f9', tickprefix: 'Rs. ', ticksuffix: 'M', linecolor: '#e2e8f0' },
+        yaxis: { gridcolor: 'transparent', linecolor: '#e2e8f0' }
+      };
+
+      Plotly.react('chartCampaignType', [traceType], layout3, plotlyConfig);
+
+      // 4. Channel Average ROAS (Multiplier Bar Chart)
+      const chROAS = channelLabels.map(ch => {
+        const slice = filteredData.filter(d => d.channel === ch);
+        const sp = slice.reduce((a, c) => a + c.spend, 0);
+        const rv = slice.reduce((a, c) => a + c.revenue, 0);
+        return sp > 0 ? parseFloat((rv / sp).toFixed(2)) : 0;
+      });
+
+      const traceROAS = {
+        x: channelLabels,
+        y: chROAS,
+        type: 'bar',
+        marker: {
+          color: ['#10b981', '#0284c7', '#0891b2', '#8b5cf6', '#ef4444'],
+          cornerradius: 4
+        },
+        text: chROAS.map(r => `${r}x`),
+        textposition: 'auto',
+        hovertemplate: '%{x}<br>Average ROAS: %{y}x<extra></extra>'
+      };
+
+      const layout4 = {
+        ...plotlyLayoutBase,
+        xaxis: { gridcolor: 'transparent', linecolor: '#e2e8f0' },
+        yaxis: { gridcolor: '#f1f5f9', ticksuffix: 'x', title: 'ROAS Multiple (x)', linecolor: '#e2e8f0' }
+      };
+
+      Plotly.react('chartChannelVariance', [traceROAS], layout4, plotlyConfig);
+    }
+
+    // ---------------------------------------------------------------------------
+    // Data Table & CSV Download Controller
+    // ---------------------------------------------------------------------------
+    function renderTable() {
+      const searchVal = document.getElementById('table-search').value.toLowerCase();
+      const filteredBySearch = filteredData.filter(d =>
+        d.id.toLowerCase().includes(searchVal) ||
+        d.channel.toLowerCase().includes(searchVal) ||
+        d.region.toLowerCase().includes(searchVal) ||
+        d.type.toLowerCase().includes(searchVal) ||
+        d.category.toLowerCase().includes(searchVal)
+      );
+
+      const totalRecords = filteredBySearch.length;
+      const totalPages = Math.max(1, Math.ceil(totalRecords / tablePageSize));
+      if (tableCurrentPage > totalPages) tableCurrentPage = totalPages;
+
+      const start = (tableCurrentPage - 1) * tablePageSize;
+      const pageData = filteredBySearch.slice(start, start + tablePageSize);
+
+      const tbody = document.getElementById('table-body');
+      tbody.innerHTML = '';
+
+      if (pageData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="13" class="text-center py-6 text-slate-400">No campaigns found matching search criteria.</td></tr>`;
+      } else {
+        pageData.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+          tr.innerHTML = `
+            <td class="py-2.5 px-3 font-semibold text-slate-900">${row.id}</td>
+            <td class="py-2.5 px-3 text-slate-500">${row.date}</td>
+            <td class="py-2.5 px-3">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${row.channel === 'In-Store' ? 'bg-emerald-100 text-emerald-800' :
+              row.channel === 'SMS' ? 'bg-blue-100 text-blue-800' :
+                row.channel === 'Email' ? 'bg-cyan-100 text-cyan-800' :
+                  row.channel === 'Instagram' ? 'bg-purple-100 text-purple-800' : 'bg-red-100 text-red-800'
+            }">${row.channel}</span>
+            </td>
+            <td class="py-2.5 px-3">${row.type}</td>
+            <td class="py-2.5 px-3">${row.region}</td>
+            <td class="py-2.5 px-3 text-right font-medium">Rs. ${row.spend.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+            <td class="py-2.5 px-3 text-right">${row.impressions.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right">${row.clicks.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right font-bold text-slate-700">${row.ctr.toFixed(2)}%</td>
+            <td class="py-2.5 px-3 text-right">${row.conversions.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right font-bold text-slate-700">${row.cvr.toFixed(2)}%</td>
+            <td class="py-2.5 px-3 text-right font-bold text-slate-900">Rs. ${row.revenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+            <td class="py-2.5 px-3 text-right font-extrabold ${row.roas >= 10 ? 'text-emerald-600' : row.roas >= 4 ? 'text-blue-600' : 'text-red-500'}">${row.roas.toFixed(2)}x</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      document.getElementById('table-pagination-info').innerText = `Showing ${Math.min(totalRecords, start + 1)} to ${Math.min(totalRecords, start + tablePageSize)} of ${totalRecords} campaigns`;
+      document.getElementById('current-page-num').innerText = `${tableCurrentPage} / ${totalPages}`;
+    }
+
+    function changeTablePage(delta) {
+      tableCurrentPage += delta;
+      if (tableCurrentPage < 1) tableCurrentPage = 1;
+      renderTable();
+    }
+
+    function downloadCleanedCSV() {
+      const headers = ["Campaign_ID", "Campaign_Date", "Month", "Month_Num", "Campaign_Type", "Channel", "Region", "Product_Category", "Spend_INR", "Impressions", "Clicks", "Leads", "Conversions", "Revenue_INR", "Click_Through_Rate", "Conversion_Rate", "Return_on_Ad_Spend"];
+      let csvContent = "data:text/csv;charset=utf-8," + headers.join(",") + "\n";
+
+      rawData.forEach(r => {
+        const row = [r.id, r.date, r.month, r.month_num, `"${r.type}"`, r.channel, r.region, `"${r.category}"`, r.spend, r.impressions, r.clicks, r.leads, r.conversions, r.revenue, r.ctr, r.cvr, r.roas];
+        csvContent += row.join(",") + "\n";
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "BrightWave_Cleaned_Promotion_Data_INR.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // ---------------------------------------------------------------------------
+    // PowerPoint Presentation (.pptx) Generator Controller
+    // ---------------------------------------------------------------------------
+    function downloadPowerPointPresentation() {
+      if (typeof PptxGenJS === 'undefined') {
+        alert('The PowerPoint export engine is still loading. Please check your internet connection or try again in a few seconds.');
+        return;
+      }
+
+      const btns = document.querySelectorAll('.download-ppt-btn');
+      btns.forEach(b => {
+        b.dataset.origText = b.innerHTML;
+        b.innerHTML = '<span class="flex items-center space-x-1.5"><svg class="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg><span>Generating PPT...</span></span>';
+        b.disabled = true;
+      });
+
+      setTimeout(() => {
+        try {
+          const pptx = new PptxGenJS();
+          pptx.layout = 'LAYOUT_16x9';
+          pptx.author = 'BrightWave Retail Analytics Group';
+          pptx.company = 'BrightWave Retail';
+          pptx.title = 'BrightWave Retail Promotional Campaign Performance Analytics';
+
+          // Slide 1: Title
+          const s1 = pptx.addSlide();
+          s1.background = { color: '0F172A' };
+          s1.addShape(pptx.ShapeType ? pptx.ShapeType.rect : 'rect', { x: 0, y: 0, w: 10, h: 0.12, fill: { color: '0284C7' }, line: { color: '0284C7' } });
+          s1.addText('BRIGHTWAVE RETAIL • INDIAN RETAIL MARKET', { x: 0.8, y: 1.0, w: 8.4, h: 0.35, fontSize: 11, bold: true, color: '38BDF8', fontFace: 'Arial' });
+          s1.addText('Evaluating Promotional Campaign Performance', { x: 0.8, y: 1.4, w: 8.4, h: 1.1, fontSize: 26, bold: true, color: 'FFFFFF', fontFace: 'Arial' });
+          s1.addText('An Empirical Analytics Study across 4 Regions, 5 Marketing Channels, and 148 Campaigns', { x: 0.8, y: 2.6, w: 8.4, h: 0.5, fontSize: 13, color: '94A3B8', fontFace: 'Arial' });
+          s1.addShape(pptx.ShapeType ? pptx.ShapeType.rect : 'rect', { x: 0.8, y: 3.3, w: 8.4, h: 1.5, fill: { color: '1E293B' }, line: { color: '334155', width: 1 } });
+          s1.addText([
+            { text: 'Academic Course: ', options: { bold: true, color: '38BDF8', fontSize: 10.5 } },
+            { text: 'BBA Semester III — Python for Data Analytics for Business (Indian Market)\n', options: { color: 'FFFFFF', fontSize: 10.5 } },
+            { text: 'Analytics Stack: ', options: { bold: true, color: '38BDF8', fontSize: 10.5 } },
+            { text: 'Python (Pandas, NumPy, Matplotlib, Seaborn) & Interactive Web Dashboard\n', options: { color: 'CBD5E1', fontSize: 10.5 } },
+            { text: 'Governance Baseline: ', options: { bold: true, color: '38BDF8', fontSize: 10.5 } },
+            { text: 'Single Source of Truth (148 Clean Campaigns) | Currency: INR (Rs.) | Submission: Nov 2026', options: { color: '34D399', fontSize: 10.5 } }
+          ], { x: 1.0, y: 3.45, w: 8.0, h: 1.2, fontFace: 'Arial' });
+
+          // Slide 2: Challenge & Scope
+          const s2 = pptx.addSlide();
+          s2.background = { color: 'F8FAFC' };
+          s2.addText('Executive Challenge & Business Scope', { x: 0.8, y: 0.45, w: 8.4, h: 0.45, fontSize: 20, bold: true, color: '0F172A', fontFace: 'Arial' });
+          s2.addText('Addressing un-attributed promotional expenditures and marketing budget leakage', { x: 0.8, y: 0.9, w: 8.4, h: 0.3, fontSize: 11, color: '64748B', fontFace: 'Arial' });
+          const cardData = [
+            { title: '1. Commercial Challenge', desc: 'BrightWave spent Rs. 2.05 Million across retail and digital channels without attribution models. Paid social media ads (Facebook) were suspected of bleeding capital with minimal retail purchasing intent.', color: '0284C7' },
+            { title: '2. Analytical Scope', desc: 'Forensically audited 150 raw records down to 148 verified campaigns. Modeled funnel stages: Click-Through Rate (CTR), Conversion Rate (CVR), and Return on Ad Spend (ROAS) across 4 regions in India.', color: '0F766E' },
+            { title: '3. Strategic Goal', desc: 'Deliver actionable, mathematically validated budget reallocations to eliminate marketing waste on passive social feeds and scale high-ROAS In-Store POS displays and direct SMS retention flywheels.', color: '10B981' }
+          ];
+          cardData.forEach((c, idx) => {
+            const xPos = 0.8 + idx * 2.9;
+            s2.addShape(pptx.ShapeType ? pptx.ShapeType.rect : 'rect', { x: xPos, y: 1.4, w: 2.6, h: 3.6, fill: { color: 'FFFFFF' }, line: { color: 'E2E8F0', width: 1 } });
+            s2.addShape(pptx.ShapeType ? pptx.ShapeType.rect : 'rect', { x: xPos, y: 1.4, w: 2.6, h: 0.1, fill: { color: c.color }, line: { color: c.color } });
+            s2.addText(c.title, { x: xPos + 0.15, y: 1.6, w: 2.3, h: 0.4, fontSize: 12, bold: true, color: '0F172A', fontFace: 'Arial' });
+            s2.addText(c.desc, { x: xPos + 0.15, y: 2.1, w: 2.3, h: 2.7, fontSize: 10, color: '475569', fontFace: 'Arial', lineSpacing: 14 });
+          });
+
+          // Slide 3: Single Source of Truth & Hygiene
+          const s3 = pptx.addSlide();
+          s3.background = { color: 'F8FAFC' };
+          s3.addText('Single Source of Truth: Data Cleaning & Hygiene', { x: 0.8, y: 0.45, w: 8.4, h: 0.45, fontSize: 20, bold: true, color: '0F172A', fontFace: 'Arial' });
+          s3.addText('Forensic audit and cleaning protocol executed via Python pandas pipeline', { x: 0.8, y: 0.9, w: 8.4, h: 0.3, fontSize: 11, color: '64748B', fontFace: 'Arial' });
+          const stats = [
+            { label: 'Raw Observations', val: '150 Rows', sub: 'Initial raw dataset' },
+            { label: 'Duplicates Dropped', val: '2 Rows', sub: 'PC0019 & PC0065' },
+            { label: 'Median Imputations', val: '6 Values', sub: 'Spend (Rs. 13.5K) & Leads (298)' },
+            { label: 'Cleaned Dataset', val: '148 Rows', sub: '100% verified baseline' }
+          ];
+          stats.forEach((st, idx) => {
+            const xPos = 0.8 + idx * 2.18;
+            s3.addShape(pptx.ShapeType ? pptx.ShapeType.rect : 'rect', { x: xPos, y: 1.35, w: 2.0, h: 1.05, fill: { color: 'FFFFFF' }, line: { color: 'E2E8F0', width: 1 } });
+            s3.addText(st.label, { x: xPos, y: 1.42, w: 2.0, h: 0.22, fontSize: 8, color: '64748B', align: 'center', bold: true });
+            s3.addText(st.val, { x: xPos, y: 1.65, w: 2.0, h: 0.35, fontSize: 13, color: '0284C7', align: 'center', bold: true });
+            s3.addText(st.sub, { x: xPos, y: 2.05, w: 2.0, h: 0.25, fontSize: 7.5, color: '94A3B8', align: 'center' });
+          });
+
+          // Slide 4: Executive KPI Snapshot
+          const s4 = pptx.addSlide();
+          s4.background = { color: 'F8FAFC' };
+          s4.addText('Executive KPI Snapshot: Full Portfolio Performance', { x: 0.8, y: 0.45, w: 8.4, h: 0.45, fontSize: 20, bold: true, color: '0F172A', fontFace: 'Arial' });
+          const kpis = [
+            { label: 'TOTAL PROMOTIONAL SPEND', val: 'Rs. 2.05M', sub: 'Rs. 13,821 avg / campaign', col: '0F172A', textCol: 'FFFFFF' },
+            { label: 'TOTAL ATTRIBUTED REVENUE', val: 'Rs. 18.45M', sub: 'Rs. 124,678 avg / campaign', col: '0F172A', textCol: '38BDF8' },
+            { label: 'PORTFOLIO OVERALL ROAS', val: '9.02x', sub: 'Rs. 9.02 returned per Rs. 1 spent', col: '059669', textCol: 'FFFFFF' },
+            { label: 'TOTAL CUSTOMER REACH', val: '6.38M Views', sub: '348,126 Clicks (5.45% CTR)', col: 'FFFFFF', textCol: '0F172A' },
+            { label: 'COMPLETED CONVERSIONS', val: '17,624 Orders', sub: '5.06% Average Conversion Rate', col: 'FFFFFF', textCol: '0F172A' },
+            { label: 'CHANNEL ROAS SPREAD', val: '3.25x – 27.84x', sub: 'FB (3.25x) vs. In-Store (27.84x)', col: 'FFFFFF', textCol: '0F172A' }
+          ];
+          kpis.forEach((k, idx) => {
+            const xPos = 0.8 + (idx % 3) * 2.9;
+            const yPos = 1.15 + Math.floor(idx / 3) * 1.95;
+            s4.addShape(pptx.ShapeType ? pptx.ShapeType.rect : 'rect', { x: xPos, y: yPos, w: 2.6, h: 1.7, fill: { color: k.col }, line: { color: 'CBD5E1', width: 1 } });
+            s4.addText(k.label, { x: xPos + 0.15, y: yPos + 0.15, w: 2.3, h: 0.25, fontSize: 7.5, bold: true, color: k.col === '0F172A' || k.col === '059669' ? '94A3B8' : '64748B' });
+            s4.addText(k.val, { x: xPos + 0.15, y: yPos + 0.45, w: 2.3, h: 0.55, fontSize: 18, bold: true, color: k.textCol, fontFace: 'Arial' });
+            s4.addText(k.sub, { x: xPos + 0.15, y: yPos + 1.1, w: 2.3, h: 0.4, fontSize: 8.5, color: k.col === '0F172A' || k.col === '059669' ? 'CBD5E1' : '64748B' });
+          });
+
+          // Slide 5: Save & Download
+          pptx.writeFile({ fileName: 'BrightWave_Retail_Promotion_Analytics_Presentation.pptx' })
+            .then(() => {
+              btns.forEach(b => {
+                b.innerHTML = b.dataset.origText || '<span>Download PPT (.pptx)</span>';
+                b.disabled = false;
+              });
+            })
+            .catch(err => {
+              console.error('Error generating PPT:', err);
+              alert('Error generating PowerPoint file: ' + err.message);
+              btns.forEach(b => {
+                b.innerHTML = b.dataset.origText || '<span>Download PPT (.pptx)</span>';
+                b.disabled = false;
+              });
+            });
+
+        } catch (err) {
+          console.error('PowerPoint Generation Error:', err);
+          alert('PowerPoint generator encountered an error: ' + err.message);
+          btns.forEach(b => {
+            b.innerHTML = b.dataset.origText || '<span>Download PPT (.pptx)</span>';
+            b.disabled = false;
+          });
+        }
+      }, 100);
+    }
+
+    // ---------------------------------------------------------------------------
+    // Initializer
+    // ---------------------------------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSlideDots();
+      goToSlide(1);
+      updateKPIs();
+      updatePlotlyCharts();
+      updateRecommendations();
+      renderTable();
+      runSimulator();
+    });
+  </script>
+</body>
+
+</html>
