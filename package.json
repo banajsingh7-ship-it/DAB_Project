@@ -1,12 +1,12 @@
 {
   "name": "brightwave-retail-analytics",
   "version": "1.0.0",
-  "description": "BrightWave Retail Promotion Analytics - Interactive Web Application and Presentation Deck",
-  "main": "index.html",
+  "description": "BrightWave Retail Promotion Analytics - Interactive Web Dashboard & Presentation Deck",
+  "main": "public/index.html",
   "scripts": {
-    "dev": "npx serve .",
-    "start": "npx serve .",
-    "build": "echo 'Build complete'"
+    "dev": "npx serve public",
+    "start": "npx serve public",
+    "build": "node -e \"const fs=require('fs'); if(!fs.existsSync('public')) fs.mkdirSync('public'); console.log('Build complete: public directory ready for deployment.');\""
   },
   "keywords": [
     "analytics",
@@ -19,4 +19,3 @@
   "author": "BrightWave Analytics Team",
   "license": "MIT"
 }
-

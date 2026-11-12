@@ -1,98 +1,66 @@
-# BrightWave Retail: Promotion Analytics & Executive Web Application
-**Course:** BBA Semester III — Python for Data Analytics for Business  
-**Project:** Evaluating Promotional Campaign Performance  
+# BrightWave Retail: Promotion Analytics & Executive Web Dashboard
+**Interactive Web Application & Promotional Data Suite (Indian Retail Market • INR)**
 
 ---
 
 ## 🌟 Executive Overview
-This project delivers an end-to-end promotional analytics suite for **BrightWave Retail**, evaluating 148 verified marketing campaigns across five channels (**In-Store, SMS, Email, Instagram, Facebook**) and four geographic regions.
+This repository contains the standalone, executive-grade web dashboard and data suite for **BrightWave Retail**, analyzing 148 verified marketing campaigns across 5 marketing channels (**In-Store, SMS, Email, Instagram, Facebook**) and 4 Indian geographic regions.
 
-All deliverables are 100% mathematically synchronized using our **Single Source of Truth** data pipeline.
-
----
-
-## 📁 Project Deliverables
-
-| Deliverable | Location | Description |
-| :--- | :--- | :--- |
-| **Vercel Web App** | `index.html` | Interactive Web Application featuring Presentation Deck (6 slides), Live Analytics & Recommendation Engine, Data Explorer, and Report Reader. |
-| **Jupyter Notebook** | `notebook/BrightWave_CaseStudy_Q1_to_Q10.ipynb` | Complete, runnable Jupyter Notebook answering all 10 questions and 40 sub-tasks with line-by-line comments. |
-| **14-Section Formal Report** | `report/Project_Report.md` | Formal academic report strictly matching curriculum guidelines and evaluation rubrics. |
-| **Streamlit Web App** | `app.py` | Standalone Python Streamlit application (`streamlit run app.py`). |
-| **Clean Data & Metrics** | `data/cleaned_promotion_data.csv`<br>`data/data_summary.json` | Verified clean dataset and comprehensive JSON audit/metric summary. |
-| **Processing Pipeline** | `utils/data_processor.py` | Shared data cleaning, text normalization, and feature engineering script. |
+- **Production-Ready & Vercel Optimized:** Hosted with zero backend dependencies, zero cold boots, and instant recalculations.
+- **Client-Side Technologies:** HTML5, Tailwind CSS, Plotly.js, and PptxGenJS (all loaded via CDN).
+- **Embedded Single Source of Truth:** 148 cleaned campaign records with full INR (`Rs.`) currency formatting.
 
 ---
 
-## 🚀 How to Host on Vercel (Quick Deployment Guide)
+## 📁 Repository Structure
 
-The web application is fully optimized for **Vercel** with zero server lag, zero cold boots, and instant interactive recalculations.
-
-### Method 1: Deploy via GitHub (Recommended)
-1. Push this project folder to your GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "BrightWave Retail Promotion Analytics"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/brightwave-analytics.git
-   git push -u origin main
-   ```
-2. Log in to [Vercel](https://vercel.com).
-3. Click **"Add New..." > "Project"**.
-4. Select your `brightwave-analytics` repository.
-5. Keep default settings (`Other` framework preset) and click **"Deploy"**.
-6. Your interactive web app will be live with a global HTTPS URL (e.g., `https://brightwave-analytics.vercel.app`) in under 30 seconds!
-
-### Method 2: Deploy via Vercel CLI
-```bash
-npm install -g vercel
-vercel login
-vercel --prod
+```text
+DAB Project/
+├── public/                                # Production Deployment Directory (Vercel Output)
+│   ├── index.html                         # Executive Web Dashboard (Tabs, Plotly Charts, PPT Export)
+│   └── cleaned_promotion_data.json        # 148 Clean Campaign Records (JSON)
+├── data/                                  # Project Datasets & Metadata
+│   ├── cleaned_promotion_data.json        # Cleaned dataset (JSON)
+│   ├── cleaned_promotion_data.csv         # Cleaned dataset (CSV)
+│   ├── Promotion_Analytics_Data.csv       # Raw source dataset (CSV)
+│   └── data_summary.json                  # Audit statistics & descriptive metrics
+├── vercel.json                            # Vercel configuration (points to public/)
+├── package.json                           # Local dev and Vercel build script
+├── .gitignore                             # Git ignore rules
+└── README.md                              # Project documentation
 ```
 
 ---
 
-## 💻 How to Run Locally
+## 🚀 Key Dashboard Features
 
-### Option A: Open Web App Locally in Any Browser (Zero Installation)
-Simply double-click `index.html` or open it with Chrome, Edge, or Firefox.  
-Or use a local server:
-```bash
-npx serve .
-# Or via Python:
-python -m http.server 3000
-```
-Then visit `http://localhost:3000`.
+1. **Presentation Deck Mode (Slide Deck):**
+   - 6 executive presentation slides for board-level reporting.
+   - One-click client-side export to editable **Microsoft PowerPoint (`.pptx`)**.
+   - One-click print/PDF export.
 
-### Option B: Run the Jupyter Notebook
-```bash
-pip install -r requirements.txt
-jupyter notebook notebook/BrightWave_CaseStudy_Q1_to_Q10.ipynb
-```
+2. **Interactive Analytics & Smart Recommendation Engine:**
+   - Dynamic KPI cards: Spend, Revenue, ROAS, Conversions, CTR, CVR.
+   - 4 live Plotly.js charts (Revenue vs. Spend, Monthly Trend, Strategy Breakdown, Channel ROAS Multiples).
+   - Interactive **What-If Scenario Simulator**: Test revenue impact of reallocating marketing spend from Facebook to SMS/In-Store.
+   - Automated Managerial Recommendation Engine generating live action bullets.
 
-### Option C: Run the Python Streamlit App
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
+3. **Data Explorer:**
+   - Searchable, paginated data table of all 148 cleaned records.
+   - One-click CSV export of the cleaned dataset.
+
+4. **14-Section Academic Report & Viva Defense Cheat Sheet:**
+   - Built-in report reader and examiner Q&A preparation cheat sheet.
 
 ---
 
-## 🎓 Viva Defense Fast-Facts & Model Answers
+## 💻 Local Testing & Deployment
 
-1. **Why is Mean Revenue (Rs. 124K) double the Median (Rs. 63K)?**  
-   Revenue exhibits severe positive skewness caused by blockbuster In-Store promotions (e.g. `PC0003` generating Rs. 954,370 and `PC0002` generating Rs. 788,632). The median (Rs. 63,217.64) is a more realistic baseline expectation.
+### Local Development:
+```bash
+# Serve the public directory locally
+npx serve public
+```
 
-2. **How did you safeguard against ZeroDivisionError in Python?**  
-   We used vectorized `numpy.where(condition, true_val, 0.0)` for all derived formulas:
-   - $\text{CTR} = (\text{Clicks} / \text{Impressions}) \times 100$
-   - $\text{CVR} = (\text{Conversions} / \text{Clicks}) \times 100$
-   - $\text{ROAS} = \text{Revenue} / \text{Spend}$
-
-3. **Why impute missing Spend with the Median instead of Mean?**  
-   The arithmetic mean is pulled upwards by outlier budgets. The median (Rs. 13,535.24) preserves the true 50th percentile of typical campaign expenditures.
-
-4. **What is the primary commercial recommendation?**  
-   Reallocate 40% of Facebook's budget (~Rs. 125,000) into high-performing SMS (12.68x ROAS) and physical In-Store visual merchandising (27.84x ROAS) for an estimated **+Rs. 1.18 Million net revenue lift**.
-
+### Vercel Deployment:
+Deploy directly from GitHub by importing this repository into Vercel. Vercel automatically detects `vercel.json` with `"outputDirectory": "public"` and deploys in seconds.
