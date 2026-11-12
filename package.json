@@ -1,0 +1,22 @@
+{
+  "name": "brightwave-retail-analytics",
+  "version": "1.0.0",
+  "description": "BrightWave Retail Promotion Analytics - Interactive Web Application and Presentation Deck",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve .",
+    "build": "echo 'Build complete'"
+  },
+  "keywords": [
+    "analytics",
+    "retail",
+    "promotion",
+    "dashboard",
+    "presentation",
+    "vercel"
+  ],
+  "author": "BrightWave Analytics Team",
+  "license": "MIT"
+}
+

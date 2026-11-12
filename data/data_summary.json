@@ -1,0 +1,275 @@
+{
+  "project_title": "BrightWave Retail Promotion Analytics",
+  "currency": "INR (Rs.)",
+  "market_territory": "Indian Retail Market",
+  "audit_date": "2026-11-12",
+  "raw_audit": {
+    "initial_row_count": 150,
+    "initial_column_count": 12,
+    "duplicate_rows_count": 2,
+    "duplicate_campaign_ids": ["PC0019", "PC0065"],
+    "missing_values": {
+      "Spend": 2,
+      "Leads": 4,
+      "Channel": 2
+    },
+    "columns": [
+      "Campaign_ID",
+      "Campaign_Date",
+      "Campaign_Type",
+      "Channel",
+      "Region",
+      "Product_Category",
+      "Spend",
+      "Impressions",
+      "Clicks",
+      "Leads",
+      "Conversions",
+      "Revenue"
+    ],
+    "dtypes": {
+      "Campaign_ID": "object",
+      "Campaign_Date": "object",
+      "Campaign_Type": "object",
+      "Channel": "object",
+      "Region": "object",
+      "Product_Category": "object",
+      "Spend": "float64",
+      "Impressions": "int64",
+      "Clicks": "int64",
+      "Leads": "float64",
+      "Conversions": "int64",
+      "Revenue": "float64"
+    }
+  },
+  "cleaning_metadata": {
+    "duplicates_removed": 2,
+    "final_row_count": 148,
+    "spend_median_imputed_value": 13535.24,
+    "spend_missing_count": 2,
+    "leads_median_imputed_value": 298,
+    "leads_missing_count": 4,
+    "channel_mode_imputed_value": "In-Store",
+    "channel_missing_count": 2,
+    "text_casing_corrections": {
+      "Channel": [
+        {"original": "instagram", "cleaned": "Instagram", "affected_ids": ["PC0015"]},
+        {"original": "FACEBOOK", "cleaned": "Facebook", "affected_ids": ["PC0048"]},
+        {"original": "Email ", "cleaned": "Email", "affected_ids": ["PC0089"]}
+      ],
+      "Campaign_Type": [
+        {"original": "discount offer", "cleaned": "Discount Offer", "affected_ids": ["PC0026"]}
+      ],
+      "Region": [
+        {"original": " north", "cleaned": "North", "affected_ids": ["PC0121"]}
+      ],
+      "Product_Category": [
+        {"original": "personal care ", "cleaned": "Personal Care", "affected_ids": ["PC0100"]}
+      ]
+    },
+    "date_conversion": {
+      "original_format": "MM/DD/YYYY string",
+      "cleaned_format": "datetime64[ns]",
+      "date_range": {
+        "start": "2026-01-02",
+        "end": "2026-09-26",
+        "total_months": 9
+      }
+    }
+  },
+  "metrics": {
+    "totals": {
+      "total_spend": 2045582.47,
+      "total_revenue": 18452391.82,
+      "overall_roas": 9.02,
+      "total_impressions": 6382105,
+      "total_clicks": 348126,
+      "total_leads": 69142,
+      "total_conversions": 17624,
+      "overall_ctr_pct": 5.45,
+      "overall_cvr_pct": 5.06,
+      "average_campaign_spend": 13821.50,
+      "average_campaign_revenue": 124678.32
+    },
+    "descriptive_stats": {
+      "Spend": {
+        "mean": 13821.50,
+        "median": 13535.24,
+        "min": 1537.55,
+        "max": 24998.07,
+        "std": 6842.19
+      },
+      "Impressions": {
+        "mean": 43122.33,
+        "median": 43812.00,
+        "min": 5141,
+        "max": 78893,
+        "std": 21854.62
+      },
+      "Clicks": {
+        "mean": 2352.20,
+        "median": 2047.50,
+        "min": 111,
+        "max": 6769,
+        "std": 1654.88
+      },
+      "Leads": {
+        "mean": 467.18,
+        "median": 298.00,
+        "min": 16,
+        "max": 1662,
+        "std": 382.41
+      },
+      "Conversions": {
+        "mean": 119.08,
+        "median": 73.50,
+        "min": 3,
+        "max": 589,
+        "std": 121.75
+      },
+      "Revenue": {
+        "mean": 124678.32,
+        "median": 63217.64,
+        "min": 1274.46,
+        "max": 954370.68,
+        "std": 161245.92
+      },
+      "Click_Through_Rate": {
+        "mean": 5.45,
+        "median": 5.45,
+        "min": 0.50,
+        "max": 11.26,
+        "std": 2.45
+      },
+      "Conversion_Rate": {
+        "mean": 5.06,
+        "median": 4.54,
+        "min": 0.95,
+        "max": 12.44,
+        "std": 2.52
+      },
+      "Return_on_Ad_Spend": {
+        "mean": 16.78,
+        "median": 5.60,
+        "min": 0.09,
+        "max": 126.56,
+        "std": 26.84
+      }
+    },
+    "by_channel": [
+      {
+        "Channel": "In-Store",
+        "campaigns": 47,
+        "total_spend": 621458.12,
+        "total_revenue": 10542190.45,
+        "avg_roas": 27.84,
+        "total_conversions": 9412,
+        "avg_ctr": 7.82,
+        "avg_cvr": 4.98
+      },
+      {
+        "Channel": "Instagram",
+        "campaigns": 33,
+        "total_spend": 458921.34,
+        "total_revenue": 2184512.60,
+        "avg_roas": 7.42,
+        "total_conversions": 2418,
+        "avg_ctr": 3.74,
+        "avg_cvr": 4.62
+      },
+      {
+        "Channel": "Facebook",
+        "campaigns": 24,
+        "total_spend": 312450.78,
+        "total_revenue": 789421.15,
+        "avg_roas": 3.25,
+        "total_conversions": 864,
+        "avg_ctr": 2.21,
+        "avg_cvr": 4.51
+      },
+      {
+        "Channel": "SMS",
+        "campaigns": 22,
+        "total_spend": 328410.15,
+        "total_revenue": 2641210.82,
+        "avg_roas": 12.68,
+        "total_conversions": 2714,
+        "avg_ctr": 6.35,
+        "avg_cvr": 5.12
+      },
+      {
+        "Channel": "Email",
+        "campaigns": 22,
+        "total_spend": 324342.08,
+        "total_revenue": 2295056.80,
+        "avg_roas": 10.15,
+        "total_conversions": 2216,
+        "avg_ctr": 4.41,
+        "avg_cvr": 6.24
+      }
+    ],
+    "by_campaign_type": [
+      {
+        "Campaign_Type": "Discount Offer",
+        "campaigns": 32,
+        "total_spend": 421580.45,
+        "total_revenue": 4821450.12,
+        "total_conversions": 4812,
+        "avg_roas": 17.65
+      },
+      {
+        "Campaign_Type": "Festival Campaign",
+        "campaigns": 35,
+        "total_spend": 492140.80,
+        "total_revenue": 3412580.45,
+        "total_conversions": 3120,
+        "avg_roas": 9.42
+      },
+      {
+        "Campaign_Type": "Loyalty Programme",
+        "campaigns": 30,
+        "total_spend": 412560.12,
+        "total_revenue": 3894120.30,
+        "total_conversions": 3712,
+        "avg_roas": 14.28
+      },
+      {
+        "Campaign_Type": "New Product Launch",
+        "campaigns": 28,
+        "total_spend": 398450.60,
+        "total_revenue": 4125890.75,
+        "total_conversions": 3615,
+        "avg_roas": 18.52
+      },
+      {
+        "Campaign_Type": "Referral Offer",
+        "campaigns": 23,
+        "total_spend": 320850.50,
+        "total_revenue": 2198350.20,
+        "total_conversions": 2365,
+        "avg_roas": 12.18
+      }
+    ],
+    "by_month": [
+      {"Month_Num": 1, "Month": "January", "campaigns": 21, "total_spend": 285410.20, "total_revenue": 2145890.30, "total_conversions": 2140, "avg_roas": 13.25},
+      {"Month_Num": 2, "Month": "February", "campaigns": 12, "total_spend": 164210.45, "total_revenue": 1412560.80, "total_conversions": 1315, "avg_roas": 11.45},
+      {"Month_Num": 3, "Month": "March", "campaigns": 17, "total_spend": 235120.10, "total_revenue": 2045120.15, "total_conversions": 1945, "avg_roas": 14.82},
+      {"Month_Num": 4, "Month": "April", "campaigns": 18, "total_spend": 248910.35, "total_revenue": 2415890.40, "total_conversions": 2210, "avg_roas": 18.95},
+      {"Month_Num": 5, "Month": "May", "campaigns": 11, "total_spend": 154210.20, "total_revenue": 1895420.25, "total_conversions": 1680, "avg_roas": 21.40},
+      {"Month_Num": 6, "Month": "June", "campaigns": 23, "total_spend": 324150.80, "total_revenue": 2845120.60, "total_conversions": 2740, "avg_roas": 15.65},
+      {"Month_Num": 7, "Month": "July", "campaigns": 21, "total_spend": 294120.15, "total_revenue": 3125480.90, "total_conversions": 2980, "avg_roas": 24.12},
+      {"Month_Num": 8, "Month": "August", "campaigns": 13, "total_spend": 178420.60, "total_revenue": 1245890.10, "total_conversions": 1284, "avg_roas": 11.20},
+      {"Month_Num": 9, "Month": "September", "campaigns": 12, "total_spend": 161029.62, "total_revenue": 1324018.32, "total_conversions": 1330, "avg_roas": 10.35}
+    ],
+    "key_takeaways": {
+      "top_revenue_channel": "In-Store ($10,542,190.45, 57.1% of total revenue)",
+      "top_roas_channel": "In-Store (avg ROAS 27.84x, followed by SMS at 12.68x)",
+      "underperforming_channel": "Facebook (lowest ROAS at 3.25x, lowest CTR at 2.21%)",
+      "top_revenue_campaign_type": "Discount Offer ($4,821,450.12) & New Product Launch ($4,125,890.75)",
+      "top_conversions_campaign_type": "Discount Offer (4,812 conversions)",
+      "peak_revenue_month": "July ($3,125,480.90)",
+      "highest_single_campaign_revenue": "PC0003 ($954,370.68 - In-Store New Product Launch in June)"
+    }
+  }
+}
+

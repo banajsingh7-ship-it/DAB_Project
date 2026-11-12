@@ -1,0 +1,151 @@
+Campaign_ID,Campaign_Date,Campaign_Type,Channel,Region,Product_Category,Spend,Impressions,Clicks,Leads,Conversions,Revenue
+PC0001,07/13/2026,Discount Offer,Facebook,West,Personal Care,6103.22,11068,296,79,13,7080.58
+PC0002,07/19/2026,New Product Launch,In-store,North,Personal Care,6508.21,70966,6235,1339,561,788632.13
+PC0003,06/19/2026,New Product Launch,In-store,North,Personal Care,24747.21,75694,6514,1223,544,954370.68
+PC0004,04/06/2026,Referral Offer,SMS,North,Household,23747.47,22600,1792,316,101,80451.09
+PC0005,01/14/2026,Festival Campaign,Facebook,East,Beverages,6910.19,48869,545,56,18,6157.79
+PC0006,05/10/2026,Festival Campaign,In-store,South,Personal Care,2231.41,64336,5244,1310,277,238603.03
+PC0007,05/22/2026,New Product Launch,Instagram,West,Personal Care,18690.21,41364,1318,218,35,18098.53
+PC0008,05/02/2026,Referral Offer,In-store,South,Household,2209.81,74008,6769,1014,205,279680.58
+PC0009,04/21/2026,Discount Offer,SMS,West,Grocery,5097.83,52292,3924,996,398,605662.74
+PC0010,07/12/2026,New Product Launch,Email,West,Household,16594.09,71542,3448,,303,456754.33
+PC0011,08/31/2026,Referral Offer,In-store,West,Grocery,5034.31,36195,3424,995,131,167862.32
+PC0012,07/26/2026,Festival Campaign,SMS,North,Household,14135.51,50730,2836,567,137,121579.74
+PC0013,03/23/2026,Referral Offer,Facebook,West,Grocery,3222.51,57965,2337,645,150,74786.78
+PC0014,06/09/2026,Loyalty Programme,Instagram,North,Grocery,24714.91,33639,1135,238,61,70159.62
+PC0015,01/17/2026,New Product Launch,instagram,South,Personal Care,24822.46,66548,3112,892,305,270027.33
+PC0016,01/02/2026,Referral Offer,Email,North,Beverages,4831.1,14647,804,239,100,26083.05
+PC0017,09/06/2026,New Product Launch,Facebook,West,Household,13439.6,17849,360,106,14,24753.8
+PC0018,07/03/2026,Festival Campaign,Email,North,Personal Care,13017.61,23922,1308,316,133,214433.41
+PC0019,06/15/2026,New Product Launch,Instagram,South,Grocery,16208.98,74852,700,63,10,14012.71
+PC0020,09/13/2026,New Product Launch,SMS,West,Grocery,8120.38,26082,989,254,61,85713.18
+PC0021,02/05/2026,Referral Offer,In-store,West,Grocery,14959.68,43800,3162,273,98,134349.09
+PC0022,02/27/2026,Loyalty Programme,Instagram,West,Beverages,,65409,2050,365,118,44200.07
+PC0023,05/13/2026,Loyalty Programme,Instagram,South,Personal Care,16737.68,63242,1688,267,91,159040.34
+PC0024,08/02/2026,Festival Campaign,SMS,North,Grocery,8592.37,6621,412,121,23,38869.95
+PC0025,03/26/2026,Festival Campaign,Instagram,West,Beverages,15280.32,50096,1636,314,111,67760.94
+PC0026,03/01/2026,discount offer,In-store,East,Household,9187.75,45420,2747,311,65,50032.32
+PC0027,06/16/2026,Festival Campaign,SMS,North,Household,17350.59,65513,4610,544,178,153630.28
+PC0028,08/06/2026,Festival Campaign,Facebook,West,Beverages,8212.72,35370,428,63,18,10752.84
+PC0029,03/01/2026,Referral Offer,Facebook,North,Household,6782.9,26738,181,16,3,5311.04
+PC0030,01/28/2026,Loyalty Programme,Email,West,Personal Care,16969.35,47403,2642,680,212,164642.36
+PC0031,08/15/2026,Loyalty Programme,Instagram,East,Beverages,2972.2,23204,1202,120,41,62743.54
+PC0032,01/13/2026,New Product Launch,,West,Household,24990.43,29217,379,49,20,9309.67
+PC0033,04/15/2026,Loyalty Programme,Email,South,Personal Care,15230.97,11367,413,83,32,44626.29
+PC0034,06/23/2026,Festival Campaign,In-store,South,Household,18619.38,11269,768,134,23,23897.66
+PC0035,03/26/2026,Festival Campaign,Email,East,Beverages,19821.92,27909,1041,242,53,51389.05
+PC0036,04/28/2026,Festival Campaign,In-store,North,Grocery,5377.36,69148,5721,820,355,590902.44
+PC0037,09/24/2026,Loyalty Programme,SMS,West,Grocery,18629.51,21045,1789,320,100,63210.08
+PC0038,06/09/2026,Festival Campaign,Email,East,Grocery,22532.14,44327,1714,,74,32612.69
+PC0039,04/16/2026,Festival Campaign,SMS,East,Household,7554.84,67208,3664,933,243,110881.92
+PC0040,06/14/2026,Loyalty Programme,Facebook,South,Grocery,13485.07,42161,1047,147,30,36617.39
+PC0041,08/09/2026,New Product Launch,Instagram,West,Personal Care,9709.81,50530,1735,239,55,49434.78
+PC0042,06/20/2026,Festival Campaign,In-store,West,Grocery,5323.86,38108,4283,928,201,102876.42
+PC0043,01/24/2026,Festival Campaign,In-store,South,Beverages,4963.68,33555,2098,584,74,34854.23
+PC0044,06/11/2026,Discount Offer,In-store,South,Grocery,21980.06,62224,4392,1163,321,353330.93
+PC0045,01/31/2026,Festival Campaign,Facebook,North,Personal Care,23749.35,61194,2964,669,68,105484.22
+PC0046,05/26/2026,Referral Offer,Instagram,West,Grocery,24012,37051,911,247,97,56407.81
+PC0047,07/06/2026,Discount Offer,In-store,East,Beverages,2114.38,28117,2133,392,170,134444.68
+PC0048,01/27/2026,Loyalty Programme,FACEBOOK,South,Household,16051.83,43347,817,191,73,19648.48
+PC0049,03/02/2026,Loyalty Programme,In-store,South,Beverages,20482.79,49778,2891,640,255,175860.91
+PC0050,05/13/2026,Loyalty Programme,Instagram,South,Personal Care,20707.38,31354,1172,211,74,45076.12
+PC0051,03/24/2026,Referral Offer,Instagram,West,Household,1914.77,38762,1410,345,70,110946.32
+PC0052,09/01/2026,Loyalty Programme,SMS,West,Beverages,20986.84,74872,5013,1184,287,240374.18
+PC0053,09/03/2026,New Product Launch,Facebook,South,Household,20432.46,22366,111,16,4,4968.41
+PC0054,02/17/2026,Loyalty Programme,Instagram,North,Personal Care,4286.25,48941,2003,539,91,103300.53
+PC0055,08/30/2026,Discount Offer,In-store,North,Grocery,6571.41,69129,5446,1157,329,507246.11
+PC0056,01/29/2026,Discount Offer,Email,West,Household,22261.53,45645,2469,296,95,151457.78
+PC0057,07/16/2026,New Product Launch,SMS,East,Beverages,12054.49,32259,2577,210,40,61474.25
+PC0058,03/31/2026,Discount Offer,SMS,West,Grocery,20653.18,17024,1063,96,18,8350.55
+PC0059,04/01/2026,Festival Campaign,In-store,North,Household,24406.68,52149,4719,1124,145,171206.6
+PC0060,09/21/2026,Referral Offer,In-store,North,Beverages,18185.24,18297,1560,183,36,9799.3
+PC0061,02/26/2026,Loyalty Programme,Email,South,Beverages,8902.31,59704,3430,943,110,94589.2
+PC0062,01/03/2026,Loyalty Programme,In-store,East,Grocery,16304.22,41313,4650,420,49,68857.81
+PC0063,04/13/2026,New Product Launch,Instagram,East,Personal Care,11309.33,33297,708,112,29,38576.18
+PC0064,02/03/2026,Referral Offer,Email,South,Grocery,15435.79,76456,3517,939,379,462635.58
+PC0065,02/17/2026,Festival Campaign,Instagram,West,Household,10590.14,43824,510,83,22,8653.17
+PC0066,02/12/2026,Loyalty Programme,Instagram,West,Beverages,15510.22,69510,2546,469,72,103413.33
+PC0067,06/20/2026,Loyalty Programme,Instagram,West,Beverages,13585.41,52026,3016,736,222,97968.2
+PC0068,01/23/2026,New Product Launch,In-store,East,Personal Care,6882.47,22617,2045,467,151,213636.46
+PC0069,08/09/2026,Festival Campaign,SMS,East,Household,13123.59,32058,1367,,52,41700.98
+PC0070,07/26/2026,Referral Offer,Facebook,East,Household,12887.41,5141,133,16,4,2906.35
+PC0071,05/08/2026,Discount Offer,Instagram,East,Household,8832.8,63444,2790,402,93,105734.22
+PC0072,04/14/2026,Festival Campaign,In-store,East,Beverages,20051.19,13425,1239,134,37,62846.83
+PC0073,09/06/2026,Referral Offer,,North,Beverages,22817.68,20444,683,146,50,54000.03
+PC0074,06/03/2026,Festival Campaign,In-store,West,Grocery,11463.08,57429,3728,581,148,253885.51
+PC0075,03/16/2026,Discount Offer,In-store,West,Beverages,10547.84,75065,4469,851,237,384774.32
+PC0076,07/16/2026,Festival Campaign,In-store,North,Personal Care,16095.24,8038,610,69,10,13519.29
+PC0077,02/01/2026,Loyalty Programme,SMS,South,Beverages,19899.06,22570,724,120,15,7058.44
+PC0078,05/11/2026,Festival Campaign,SMS,South,Beverages,9391.37,42767,2167,271,88,71875.85
+PC0079,06/14/2026,Discount Offer,In-store,West,Beverages,22279.38,41697,2889,490,122,163082.94
+PC0080,06/16/2026,Loyalty Programme,Email,South,Grocery,12100.95,37948,1587,296,51,60725.57
+PC0081,09/04/2026,Discount Offer,In-store,South,Beverages,7614.54,14727,1298,199,87,121000.72
+PC0082,08/29/2026,Discount Offer,Facebook,East,Grocery,10601.99,25720,324,63,24,21352.52
+PC0083,06/15/2026,New Product Launch,Facebook,South,Grocery,17660.32,66359,2287,333,46,27218.23
+PC0084,01/17/2026,Festival Campaign,Instagram,West,Household,19332.76,58680,2971,791,150,163023.58
+PC0085,09/23/2026,Loyalty Programme,Facebook,North,Household,,20430,190,21,3,1274.46
+PC0086,09/14/2026,Loyalty Programme,In-store,West,Beverages,11551.51,54349,5152,748,223,133665.36
+PC0087,04/24/2026,Referral Offer,Email,South,Grocery,11561.91,31675,1965,473,81,74902.07
+PC0088,04/12/2026,New Product Launch,Facebook,South,Household,4541.27,63686,1453,288,53,40384.1
+PC0089,04/18/2026,Discount Offer,Email ,West,Personal Care,6481.14,51631,2585,428,173,222031.24
+PC0090,05/27/2026,Loyalty Programme,SMS,South,Grocery,23622.4,68026,4780,1235,512,887942.08
+PC0091,08/20/2026,New Product Launch,Facebook,West,Grocery,15760.41,69611,1322,188,45,55059.4
+PC0092,06/20/2026,Loyalty Programme,In-store,West,Household,13361.06,71031,5426,1349,165,192196.47
+PC0093,08/21/2026,New Product Launch,Instagram,North,Personal Care,9189.05,20493,515,126,19,21736.8
+PC0094,05/12/2026,Loyalty Programme,Instagram,East,Grocery,19406.1,70263,2874,321,54,85756.72
+PC0095,09/25/2026,Discount Offer,In-store,North,Beverages,16502.78,19227,1271,190,71,38125.29
+PC0096,06/08/2026,Loyalty Programme,Instagram,East,Household,1537.55,74109,1999,361,46,61895.75
+PC0097,01/15/2026,Discount Offer,SMS,South,Beverages,2991.19,5526,433,75,14,17532.01
+PC0098,07/25/2026,Loyalty Programme,In-store,East,Household,17544.43,61844,4887,675,297,374296.03
+PC0099,07/27/2026,New Product Launch,Email,East,Personal Care,16441.58,50332,1885,560,60,20553.23
+PC0100,04/02/2026,New Product Launch,Facebook,South,personal care ,2129.43,44104,1537,321,96,152630.04
+PC0101,07/12/2026,Referral Offer,Facebook,North,Grocery,17810.66,62345,1395,310,73,23723.83
+PC0102,04/21/2026,New Product Launch,In-store,North,Personal Care,8489.76,54554,4088,918,122,57837.63
+PC0103,08/26/2026,Discount Offer,Facebook,South,Beverages,3491.42,19694,115,28,7,3329.75
+PC0104,03/31/2026,Festival Campaign,SMS,North,Household,11917.45,58590,3017,300,124,162854.31
+PC0105,02/02/2026,New Product Launch,Instagram,East,Grocery,11860.98,56919,1664,396,89,88232.52
+PC0106,06/08/2026,Discount Offer,Facebook,South,Beverages,17283.95,66156,1007,214,35,46535.83
+PC0107,07/07/2026,New Product Launch,SMS,North,Grocery,1914.4,66828,3744,496,55,79066.1
+PC0108,04/11/2026,Loyalty Programme,Email,East,Household,15648.14,36634,906,251,67,63225.19
+PC0109,06/12/2026,Discount Offer,In-store,West,Grocery,24563.95,46526,3745,774,196,154682.26
+PC0110,04/24/2026,Loyalty Programme,Email,East,Grocery,21582.92,68481,2983,,54,43736.24
+PC0111,08/04/2026,Loyalty Programme,Instagram,North,Beverages,24306.2,64103,2131,259,39,68809.48
+PC0112,02/19/2026,Festival Campaign,Facebook,West,Grocery,14577.79,78893,2636,280,30,15090.05
+PC0113,01/26/2026,Festival Campaign,Email,South,Grocery,24362.15,14022,417,103,16,15192.7
+PC0114,07/05/2026,New Product Launch,In-store,South,Grocery,2779.61,30648,2540,650,128,184054.46
+PC0115,06/13/2026,New Product Launch,SMS,North,Beverages,19610.75,26385,1490,427,57,40292.67
+PC0116,08/23/2026,Referral Offer,In-store,South,Household,21373.76,21607,1679,260,28,11455.35
+PC0117,01/24/2026,Discount Offer,In-store,South,Beverages,19125.3,45366,4419,832,250,215994.15
+PC0118,01/26/2026,Referral Offer,Email,West,Grocery,15064.77,15228,675,63,27,25486.9
+PC0119,07/27/2026,Discount Offer,Instagram,North,Household,22045.56,58287,2530,348,99,138825.8
+PC0120,06/29/2026,Referral Offer,Instagram,East,Household,4786.4,18245,623,105,38,28044.17
+PC0121,01/28/2026,Discount Offer,In-store, north,Grocery,4956.3,29954,1680,484,104,104266.22
+PC0122,03/13/2026,New Product Launch,SMS,North,Personal Care,5397.72,6833,585,151,53,23407.68
+PC0123,07/11/2026,Festival Campaign,Email,South,Household,10803.23,11832,545,85,30,18644.55
+PC0124,09/24/2026,Referral Offer,In-store,South,Personal Care,5633.71,12860,1107,235,46,19687
+PC0125,03/10/2026,Discount Offer,SMS,West,Household,19666.46,31155,2614,433,64,37509.69
+PC0126,07/08/2026,Discount Offer,In-store,East,Household,15403.02,61559,5720,1662,589,427799.78
+PC0127,09/21/2026,Discount Offer,In-store,North,Personal Care,23543.63,68267,6326,738,142,163768.9
+PC0128,02/22/2026,Referral Offer,Instagram,East,Personal Care,24998.07,59948,2275,200,55,49379.94
+PC0129,01/28/2026,Discount Offer,In-store,East,Beverages,9385.4,19045,1598,157,43,43922.93
+PC0130,06/09/2026,Loyalty Programme,Instagram,South,Beverages,17064.82,63505,3007,803,182,81312.64
+PC0131,06/03/2026,Discount Offer,Instagram,North,Household,11701.04,36241,1183,313,95,137780.71
+PC0132,08/23/2026,Discount Offer,In-store,South,Grocery,18099.36,68344,5142,629,243,233195.07
+PC0133,07/12/2026,Referral Offer,Instagram,West,Personal Care,17635.72,67373,2042,431,47,67890.17
+PC0134,01/31/2026,Loyalty Programme,In-store,West,Household,5440.34,76290,5108,707,205,111745.36
+PC0135,01/19/2026,New Product Launch,Email,East,Household,13266.65,44302,2312,463,93,58673.9
+PC0136,04/07/2026,Festival Campaign,Facebook,South,Beverages,11272.27,45378,1005,222,42,41503.08
+PC0137,01/18/2026,Festival Campaign,Email,South,Grocery,21085.86,25017,1364,358,94,27605.52
+PC0138,06/30/2026,Referral Offer,Instagram,East,Beverages,24370.44,38078,1318,241,72,77286.62
+PC0139,06/29/2026,Discount Offer,Email,East,Beverages,20683.35,62463,1020,236,87,156330.07
+PC0140,02/12/2026,Loyalty Programme,Instagram,East,Household,11259.71,8397,462,68,22,17988.02
+PC0141,01/31/2026,Loyalty Programme,In-store,West,Personal Care,3050.76,69617,5705,1151,158,263975
+PC0142,03/29/2026,Festival Campaign,In-store,South,Grocery,5790.09,11364,695,189,62,81992.87
+PC0019,06/15/2026,New Product Launch,Instagram,South,Grocery,16208.98,74852,700,63,10,14012.71
+PC0144,08/21/2026,Referral Offer,In-store,North,Household,13030.9,48448,3640,914,143,80830.42
+PC0145,03/15/2026,Discount Offer,Facebook,South,Household,4531.86,24725,821,196,72,98073.12
+PC0146,03/25/2026,Loyalty Programme,In-store,North,Grocery,7186.52,50255,3308,960,318,248598.84
+PC0147,09/26/2026,Discount Offer,Instagram,South,Household,8625.21,78492,3293,412,109,46832.82
+PC0065,02/17/2026,Festival Campaign,Instagram,West,Household,10590.14,43824,510,83,22,8653.17
+PC0149,09/03/2026,Festival Campaign,SMS,South,Beverages,18751.41,69499,4023,881,120,98341.41
+PC0150,04/14/2026,Loyalty Programme,Facebook,South,Grocery,16467.52,37388,625,177,56,32050.94

@@ -1,0 +1,150 @@
+Campaign_ID,Campaign_Date,Campaign_Type,Channel,Region,Product_Category,Spend,Impressions,Clicks,Leads,Conversions,Revenue,Month,Month_Num,Click_Through_Rate,Conversion_Rate,Return_on_Ad_Spend
+PC0001,2026-07-13,Discount Offer,Facebook,West,Personal Care,6103.22,11068,296,79,13,7080.58,July,7,2.67,4.39,1.16
+PC0002,2026-07-19,New Product Launch,In-Store,North,Personal Care,6508.21,70966,6235,1339,561,788632.13,July,7,8.79,9.0,121.18
+PC0003,2026-06-19,New Product Launch,In-Store,North,Personal Care,24747.21,75694,6514,1223,544,954370.68,June,6,8.61,8.35,38.56
+PC0004,2026-04-06,Referral Offer,SMS,North,Household,23747.47,22600,1792,316,101,80451.09,April,4,7.93,5.64,3.39
+PC0005,2026-01-14,Festival Campaign,Facebook,East,Beverages,6910.19,48869,545,56,18,6157.79,January,1,1.12,3.3,0.89
+PC0006,2026-05-10,Festival Campaign,In-Store,South,Personal Care,2231.41,64336,5244,1310,277,238603.03,May,5,8.15,5.28,106.93
+PC0007,2026-05-22,New Product Launch,Instagram,West,Personal Care,18690.21,41364,1318,218,35,18098.53,May,5,3.19,2.66,0.97
+PC0008,2026-05-02,Referral Offer,In-Store,South,Household,2209.81,74008,6769,1014,205,279680.58,May,5,9.15,3.03,126.56
+PC0009,2026-04-21,Discount Offer,SMS,West,Grocery,5097.83,52292,3924,996,398,605662.74,April,4,7.5,10.14,118.81
+PC0010,2026-07-12,New Product Launch,Email,West,Household,16594.09,71542,3448,298,303,456754.33,July,7,4.82,8.79,27.53
+PC0011,2026-08-31,Referral Offer,In-Store,West,Grocery,5034.31,36195,3424,995,131,167862.32,August,8,9.46,3.83,33.34
+PC0012,2026-07-26,Festival Campaign,SMS,North,Household,14135.51,50730,2836,567,137,121579.74,July,7,5.59,4.83,8.6
+PC0013,2026-03-23,Referral Offer,Facebook,West,Grocery,3222.51,57965,2337,645,150,74786.78,March,3,4.03,6.42,23.21
+PC0014,2026-06-09,Loyalty Programme,Instagram,North,Grocery,24714.91,33639,1135,238,61,70159.62,June,6,3.37,5.37,2.84
+PC0015,2026-01-17,New Product Launch,Instagram,South,Personal Care,24822.46,66548,3112,892,305,270027.33,January,1,4.68,9.8,10.88
+PC0016,2026-01-02,Referral Offer,Email,North,Beverages,4831.1,14647,804,239,100,26083.05,January,1,5.49,12.44,5.4
+PC0017,2026-09-06,New Product Launch,Facebook,West,Household,13439.6,17849,360,106,14,24753.8,September,9,2.02,3.89,1.84
+PC0018,2026-07-03,Festival Campaign,Email,North,Personal Care,13017.61,23922,1308,316,133,214433.41,July,7,5.47,10.17,16.47
+PC0019,2026-06-15,New Product Launch,Instagram,South,Grocery,16208.98,74852,700,63,10,14012.71,June,6,0.94,1.43,0.86
+PC0020,2026-09-13,New Product Launch,SMS,West,Grocery,8120.38,26082,989,254,61,85713.18,September,9,3.79,6.17,10.56
+PC0021,2026-02-05,Referral Offer,In-Store,West,Grocery,14959.68,43800,3162,273,98,134349.09,February,2,7.22,3.1,8.98
+PC0022,2026-02-27,Loyalty Programme,Instagram,West,Beverages,13535.24,65409,2050,365,118,44200.07,February,2,3.13,5.76,3.27
+PC0023,2026-05-13,Loyalty Programme,Instagram,South,Personal Care,16737.68,63242,1688,267,91,159040.34,May,5,2.67,5.39,9.5
+PC0024,2026-08-02,Festival Campaign,SMS,North,Grocery,8592.37,6621,412,121,23,38869.95,August,8,6.22,5.58,4.52
+PC0025,2026-03-26,Festival Campaign,Instagram,West,Beverages,15280.32,50096,1636,314,111,67760.94,March,3,3.27,6.78,4.43
+PC0026,2026-03-01,Discount Offer,In-Store,East,Household,9187.75,45420,2747,311,65,50032.32,March,3,6.05,2.37,5.45
+PC0027,2026-06-16,Festival Campaign,SMS,North,Household,17350.59,65513,4610,544,178,153630.28,June,6,7.04,3.86,8.85
+PC0028,2026-08-06,Festival Campaign,Facebook,West,Beverages,8212.72,35370,428,63,18,10752.84,August,8,1.21,4.21,1.31
+PC0029,2026-03-01,Referral Offer,Facebook,North,Household,6782.9,26738,181,16,3,5311.04,March,3,0.68,1.66,0.78
+PC0030,2026-01-28,Loyalty Programme,Email,West,Personal Care,16969.35,47403,2642,680,212,164642.36,January,1,5.57,8.02,9.7
+PC0031,2026-08-15,Loyalty Programme,Instagram,East,Beverages,2972.2,23204,1202,120,41,62743.54,August,8,5.18,3.41,21.11
+PC0032,2026-01-13,New Product Launch,In-Store,West,Household,24990.43,29217,379,49,20,9309.67,January,1,1.3,5.28,0.37
+PC0033,2026-04-15,Loyalty Programme,Email,South,Personal Care,15230.97,11367,413,83,32,44626.29,April,4,3.63,7.75,2.93
+PC0034,2026-06-23,Festival Campaign,In-Store,South,Household,18619.38,11269,768,134,23,23897.66,June,6,6.81,2.99,1.28
+PC0035,2026-03-26,Festival Campaign,Email,East,Beverages,19821.92,27909,1041,242,53,51389.05,March,3,3.73,5.09,2.59
+PC0036,2026-04-28,Festival Campaign,In-Store,North,Grocery,5377.36,69148,5721,820,355,590902.44,April,4,8.27,6.2,109.89
+PC0037,2026-09-24,Loyalty Programme,SMS,West,Grocery,18629.51,21045,1789,320,100,63210.08,September,9,8.5,5.59,3.39
+PC0038,2026-06-09,Festival Campaign,Email,East,Grocery,22532.14,44327,1714,298,74,32612.69,June,6,3.87,4.32,1.45
+PC0039,2026-04-16,Festival Campaign,SMS,East,Household,7554.84,67208,3664,933,243,110881.92,April,4,5.45,6.63,14.68
+PC0040,2026-06-14,Loyalty Programme,Facebook,South,Grocery,13485.07,42161,1047,147,30,36617.39,June,6,2.48,2.87,2.72
+PC0041,2026-08-09,New Product Launch,Instagram,West,Personal Care,9709.81,50530,1735,239,55,49434.78,August,8,3.43,3.17,5.09
+PC0042,2026-06-20,Festival Campaign,In-Store,West,Grocery,5323.86,38108,4283,928,201,102876.42,June,6,11.24,4.69,19.32
+PC0043,2026-01-24,Festival Campaign,In-Store,South,Beverages,4963.68,33555,2098,584,74,34854.23,January,1,6.25,3.53,7.02
+PC0044,2026-06-11,Discount Offer,In-Store,South,Grocery,21980.06,62224,4392,1163,321,353330.93,June,6,7.06,7.31,16.08
+PC0045,2026-01-31,Festival Campaign,Facebook,North,Personal Care,23749.35,61194,2964,669,68,105484.22,January,1,4.84,2.29,4.44
+PC0046,2026-05-26,Referral Offer,Instagram,West,Grocery,24012.0,37051,911,247,97,56407.81,May,5,2.46,10.65,2.35
+PC0047,2026-07-06,Discount Offer,In-Store,East,Beverages,2114.38,28117,2133,392,170,134444.68,July,7,7.59,7.97,63.59
+PC0048,2026-01-27,Loyalty Programme,Facebook,South,Household,16051.83,43347,817,191,73,19648.48,January,1,1.88,8.94,1.22
+PC0049,2026-03-02,Loyalty Programme,In-Store,South,Beverages,20482.79,49778,2891,640,255,175860.91,March,3,5.81,8.82,8.59
+PC0050,2026-05-13,Loyalty Programme,Instagram,South,Personal Care,20707.38,31354,1172,211,74,45076.12,May,5,3.74,6.31,2.18
+PC0051,2026-03-24,Referral Offer,Instagram,West,Household,1914.77,38762,1410,345,70,110946.32,March,3,3.64,4.96,57.94
+PC0052,2026-09-01,Loyalty Programme,SMS,West,Beverages,20986.84,74872,5013,1184,287,240374.18,September,9,6.7,5.73,11.45
+PC0053,2026-09-03,New Product Launch,Facebook,South,Household,20432.46,22366,111,16,4,4968.41,September,9,0.5,3.6,0.24
+PC0054,2026-02-17,Loyalty Programme,Instagram,North,Personal Care,4286.25,48941,2003,539,91,103300.53,February,2,4.09,4.54,24.1
+PC0055,2026-08-30,Discount Offer,In-Store,North,Grocery,6571.41,69129,5446,1157,329,507246.11,August,8,7.88,6.04,77.19
+PC0056,2026-01-29,Discount Offer,Email,West,Household,22261.53,45645,2469,296,95,151457.78,January,1,5.41,3.85,6.8
+PC0057,2026-07-16,New Product Launch,SMS,East,Beverages,12054.49,32259,2577,210,40,61474.25,July,7,7.99,1.55,5.1
+PC0058,2026-03-31,Discount Offer,SMS,West,Grocery,20653.18,17024,1063,96,18,8350.55,March,3,6.24,1.69,0.4
+PC0059,2026-04-01,Festival Campaign,In-Store,North,Household,24406.68,52149,4719,1124,145,171206.6,April,4,9.05,3.07,7.01
+PC0060,2026-09-21,Referral Offer,In-Store,North,Beverages,18185.24,18297,1560,183,36,9799.3,September,9,8.53,2.31,0.54
+PC0061,2026-02-26,Loyalty Programme,Email,South,Beverages,8902.31,59704,3430,943,110,94589.2,February,2,5.75,3.21,10.63
+PC0062,2026-01-03,Loyalty Programme,In-Store,East,Grocery,16304.22,41313,4650,420,49,68857.81,January,1,11.26,1.05,4.22
+PC0063,2026-04-13,New Product Launch,Instagram,East,Personal Care,11309.33,33297,708,112,29,38576.18,April,4,2.13,4.1,3.41
+PC0064,2026-02-03,Referral Offer,Email,South,Grocery,15435.79,76456,3517,939,379,462635.58,February,2,4.6,10.78,29.97
+PC0065,2026-02-17,Festival Campaign,Instagram,West,Household,10590.14,43824,510,83,22,8653.17,February,2,1.16,4.31,0.82
+PC0066,2026-02-12,Loyalty Programme,Instagram,West,Beverages,15510.22,69510,2546,469,72,103413.33,February,2,3.66,2.83,6.67
+PC0067,2026-06-20,Loyalty Programme,Instagram,West,Beverages,13585.41,52026,3016,736,222,97968.2,June,6,5.8,7.36,7.21
+PC0068,2026-01-23,New Product Launch,In-Store,East,Personal Care,6882.47,22617,2045,467,151,213636.46,January,1,9.04,7.38,31.04
+PC0069,2026-08-09,Festival Campaign,SMS,East,Household,13123.59,32058,1367,298,52,41700.98,August,8,4.26,3.8,3.18
+PC0070,2026-07-26,Referral Offer,Facebook,East,Household,12887.41,5141,133,16,4,2906.35,July,7,2.59,3.01,0.23
+PC0071,2026-05-08,Discount Offer,Instagram,East,Household,8832.8,63444,2790,402,93,105734.22,May,5,4.4,3.33,11.97
+PC0072,2026-04-14,Festival Campaign,In-Store,East,Beverages,20051.19,13425,1239,134,37,62846.83,April,4,9.23,2.99,3.13
+PC0073,2026-09-06,Referral Offer,In-Store,North,Beverages,22817.68,20444,683,146,50,54000.03,September,9,3.34,7.32,2.37
+PC0074,2026-06-03,Festival Campaign,In-Store,West,Grocery,11463.08,57429,3728,581,148,253885.51,June,6,6.49,3.97,22.15
+PC0075,2026-03-16,Discount Offer,In-Store,West,Beverages,10547.84,75065,4469,851,237,384774.32,March,3,5.95,5.3,36.48
+PC0076,2026-07-16,Festival Campaign,In-Store,North,Personal Care,16095.24,8038,610,69,10,13519.29,July,7,7.59,1.64,0.84
+PC0077,2026-02-01,Loyalty Programme,SMS,South,Beverages,19899.06,22570,724,120,15,7058.44,February,2,3.21,2.07,0.35
+PC0078,2026-05-11,Festival Campaign,SMS,South,Beverages,9391.37,42767,2167,271,88,71875.85,May,5,5.07,4.06,7.65
+PC0079,2026-06-14,Discount Offer,In-Store,West,Beverages,22279.38,41697,2889,490,122,163082.94,June,6,6.93,4.22,7.32
+PC0080,2026-06-16,Loyalty Programme,Email,South,Grocery,12100.95,37948,1587,296,51,60725.57,June,6,4.18,3.21,5.02
+PC0081,2026-09-04,Discount Offer,In-Store,South,Beverages,7614.54,14727,1298,199,87,121000.72,September,9,8.81,6.7,15.89
+PC0082,2026-08-29,Discount Offer,Facebook,East,Grocery,10601.99,25720,324,63,24,21352.52,August,8,1.26,7.41,2.01
+PC0083,2026-06-15,New Product Launch,Facebook,South,Grocery,17660.32,66359,2287,333,46,27218.23,June,6,3.45,2.01,1.54
+PC0084,2026-01-17,Festival Campaign,Instagram,West,Household,19332.76,58680,2971,791,150,163023.58,January,1,5.06,5.05,8.43
+PC0085,2026-09-23,Loyalty Programme,Facebook,North,Household,13535.24,20430,190,21,3,1274.46,September,9,0.93,1.58,0.09
+PC0086,2026-09-14,Loyalty Programme,In-Store,West,Beverages,11551.51,54349,5152,748,223,133665.36,September,9,9.48,4.33,11.57
+PC0087,2026-04-24,Referral Offer,Email,South,Grocery,11561.91,31675,1965,473,81,74902.07,April,4,6.2,4.12,6.48
+PC0088,2026-04-12,New Product Launch,Facebook,South,Household,4541.27,63686,1453,288,53,40384.1,April,4,2.28,3.65,8.89
+PC0089,2026-04-18,Discount Offer,Email,West,Personal Care,6481.14,51631,2585,428,173,222031.24,April,4,5.01,6.69,34.26
+PC0090,2026-05-27,Loyalty Programme,SMS,South,Grocery,23622.4,68026,4780,1235,512,887942.08,May,5,7.03,10.71,37.59
+PC0091,2026-08-20,New Product Launch,Facebook,West,Grocery,15760.41,69611,1322,188,45,55059.4,August,8,1.9,3.4,3.49
+PC0092,2026-06-20,Loyalty Programme,In-Store,West,Household,13361.06,71031,5426,1349,165,192196.47,June,6,7.64,3.04,14.38
+PC0093,2026-08-21,New Product Launch,Instagram,North,Personal Care,9189.05,20493,515,126,19,21736.8,August,8,2.51,3.69,2.37
+PC0094,2026-05-12,Loyalty Programme,Instagram,East,Grocery,19406.1,70263,2874,321,54,85756.72,May,5,4.09,1.88,4.42
+PC0095,2026-09-25,Discount Offer,In-Store,North,Beverages,16502.78,19227,1271,190,71,38125.29,September,9,6.61,5.59,2.31
+PC0096,2026-06-08,Loyalty Programme,Instagram,East,Household,1537.55,74109,1999,361,46,61895.75,June,6,2.7,2.3,40.26
+PC0097,2026-01-15,Discount Offer,SMS,South,Beverages,2991.19,5526,433,75,14,17532.01,January,1,7.84,3.23,5.86
+PC0098,2026-07-25,Loyalty Programme,In-Store,East,Household,17544.43,61844,4887,675,297,374296.03,July,7,7.9,6.08,21.33
+PC0099,2026-07-27,New Product Launch,Email,East,Personal Care,16441.58,50332,1885,560,60,20553.23,July,7,3.75,3.18,1.25
+PC0100,2026-04-02,New Product Launch,Facebook,South,Personal Care,2129.43,44104,1537,321,96,152630.04,April,4,3.48,6.25,71.68
+PC0101,2026-07-12,Referral Offer,Facebook,North,Grocery,17810.66,62345,1395,310,73,23723.83,July,7,2.24,5.23,1.33
+PC0102,2026-04-21,New Product Launch,In-Store,North,Personal Care,8489.76,54554,4088,918,122,57837.63,April,4,7.49,2.98,6.81
+PC0103,2026-08-26,Discount Offer,Facebook,South,Beverages,3491.42,19694,115,28,7,3329.75,August,8,0.58,6.09,0.95
+PC0104,2026-03-31,Festival Campaign,SMS,North,Household,11917.45,58590,3017,300,124,162854.31,March,3,5.15,4.11,13.66
+PC0105,2026-02-02,New Product Launch,Instagram,East,Grocery,11860.98,56919,1664,396,89,88232.52,February,2,2.92,5.35,7.44
+PC0106,2026-06-08,Discount Offer,Facebook,South,Beverages,17283.95,66156,1007,214,35,46535.83,June,6,1.52,3.48,2.69
+PC0107,2026-07-07,New Product Launch,SMS,North,Grocery,1914.4,66828,3744,496,55,79066.1,July,7,5.6,1.47,41.3
+PC0108,2026-04-11,Loyalty Programme,Email,East,Household,15648.14,36634,906,251,67,63225.19,April,4,2.47,7.4,4.04
+PC0109,2026-06-12,Discount Offer,In-Store,West,Grocery,24563.95,46526,3745,774,196,154682.26,June,6,8.05,5.23,6.3
+PC0110,2026-04-24,Loyalty Programme,Email,East,Grocery,21582.92,68481,2983,298,54,43736.24,April,4,4.36,1.81,2.03
+PC0111,2026-08-04,Loyalty Programme,Instagram,North,Beverages,24306.2,64103,2131,259,39,68809.48,August,8,3.32,1.83,2.83
+PC0112,2026-02-19,Festival Campaign,Facebook,West,Grocery,14577.79,78893,2636,280,30,15090.05,February,2,3.34,1.14,1.04
+PC0113,2026-01-26,Festival Campaign,Email,South,Grocery,24362.15,14022,417,103,16,15192.7,January,1,2.97,3.84,0.62
+PC0114,2026-07-05,New Product Launch,In-Store,South,Grocery,2779.61,30648,2540,650,128,184054.46,July,7,8.29,5.04,66.22
+PC0115,2026-06-13,New Product Launch,SMS,North,Beverages,19610.75,26385,1490,427,57,40292.67,June,6,5.65,3.83,2.05
+PC0116,2026-08-23,Referral Offer,In-Store,South,Household,21373.76,21607,1679,260,28,11455.35,August,8,7.77,1.67,0.54
+PC0117,2026-01-24,Discount Offer,In-Store,South,Beverages,19125.3,45366,4419,832,250,215994.15,January,1,9.74,5.66,11.29
+PC0118,2026-01-26,Referral Offer,Email,West,Grocery,15064.77,15228,675,63,27,25486.9,January,1,4.43,4.0,1.69
+PC0119,2026-07-27,Discount Offer,Instagram,North,Household,22045.56,58287,2530,348,99,138825.8,July,7,4.34,3.91,6.3
+PC0120,2026-06-29,Referral Offer,Instagram,East,Household,4786.4,18245,623,105,38,28044.17,June,6,3.41,6.1,5.86
+PC0121,2026-01-28,Discount Offer,In-Store,North,Grocery,4956.3,29954,1680,484,104,104266.22,January,1,5.61,6.19,21.04
+PC0122,2026-03-13,New Product Launch,SMS,North,Personal Care,5397.72,6833,585,151,53,23407.68,March,3,8.56,9.06,4.34
+PC0123,2026-07-11,Festival Campaign,Email,South,Household,10803.23,11832,545,85,30,18644.55,July,7,4.61,5.5,1.73
+PC0124,2026-09-24,Referral Offer,In-Store,South,Personal Care,5633.71,12860,1107,235,46,19687.0,September,9,8.61,4.16,3.49
+PC0125,2026-03-10,Discount Offer,SMS,West,Household,19666.46,31155,2614,433,64,37509.69,March,3,8.39,2.45,1.91
+PC0126,2026-07-08,Discount Offer,In-Store,East,Household,15403.02,61559,5720,1662,589,427799.78,July,7,9.29,10.3,27.77
+PC0127,2026-09-21,Discount Offer,In-Store,North,Personal Care,23543.63,68267,6326,738,142,163768.9,September,9,9.27,2.24,6.96
+PC0128,2026-02-22,Referral Offer,Instagram,East,Personal Care,24998.07,59948,2275,200,55,49379.94,February,2,3.8,2.42,1.98
+PC0129,2026-01-28,Discount Offer,In-Store,East,Beverages,9385.4,19045,1598,157,43,43922.93,January,1,8.39,2.69,4.68
+PC0130,2026-06-09,Loyalty Programme,Instagram,South,Beverages,17064.82,63505,3007,803,182,81312.64,June,6,4.73,6.05,4.76
+PC0131,2026-06-03,Discount Offer,Instagram,North,Household,11701.04,36241,1183,313,95,137780.71,June,6,3.26,8.03,11.78
+PC0132,2026-08-23,Discount Offer,In-Store,South,Grocery,18099.36,68344,5142,629,243,233195.07,August,8,7.52,4.73,12.88
+PC0133,2026-07-12,Referral Offer,Instagram,West,Personal Care,17635.72,67373,2042,431,47,67890.17,July,7,3.03,2.3,3.85
+PC0134,2026-01-31,Loyalty Programme,In-Store,West,Household,5440.34,76290,5108,707,205,111745.36,January,1,6.7,4.01,20.54
+PC0135,2026-01-19,New Product Launch,Email,East,Household,13266.65,44302,2312,463,93,58673.9,January,1,5.22,4.02,4.42
+PC0136,2026-04-07,Festival Campaign,Facebook,South,Beverages,11272.27,45378,1005,222,42,41503.08,April,4,2.21,4.18,3.68
+PC0137,2026-01-18,Festival Campaign,Email,South,Grocery,21085.86,25017,1364,358,94,27605.52,January,1,5.45,6.89,1.31
+PC0138,2026-06-30,Referral Offer,Instagram,East,Beverages,24370.44,38078,1318,241,72,77286.62,June,6,3.46,5.46,3.17
+PC0139,2026-06-29,Discount Offer,Email,East,Beverages,20683.35,62463,1020,236,87,156330.07,June,6,1.63,8.53,7.56
+PC0140,2026-02-12,Loyalty Programme,Instagram,East,Household,11259.71,8397,462,68,22,17988.02,February,2,5.5,4.76,1.6
+PC0141,2026-01-31,Loyalty Programme,In-Store,West,Personal Care,3050.76,69617,5705,1151,158,263975.0,January,1,8.2,2.77,86.53
+PC0142,2026-03-29,Festival Campaign,In-Store,South,Grocery,5790.09,11364,695,189,62,81992.87,March,3,6.12,8.92,14.16
+PC0144,2026-08-21,Referral Offer,In-Store,North,Household,13030.9,48448,3640,914,143,80830.42,August,8,7.51,3.93,6.2
+PC0145,2026-03-15,Discount Offer,Facebook,South,Household,4531.86,24725,821,196,72,98073.12,March,3,3.32,8.77,21.64
+PC0146,2026-03-25,Loyalty Programme,In-Store,North,Grocery,7186.52,50255,3308,960,318,248598.84,March,3,6.58,9.61,34.59
+PC0147,2026-09-26,Discount Offer,Instagram,South,Household,8625.21,78492,3293,412,109,46832.82,September,9,4.2,3.31,5.43
+PC0149,2026-09-03,Festival Campaign,SMS,South,Beverages,18751.41,69499,4023,881,120,98341.41,September,9,5.79,2.98,5.24
+PC0150,2026-04-14,Loyalty Programme,Facebook,South,Grocery,16467.52,37388,625,177,56,32050.94,April,4,1.67,8.96,1.95
+
